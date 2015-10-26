@@ -94,11 +94,9 @@
     <InterfaceDefinition Include="register.xib" />
     <InterfaceDefinition Include="setReminder.xib" />
     <InterfaceDefinition Include="Main.storyboard" />
-    <InterfaceDefinition Include="history.xib" />
-    <InterfaceDefinition Include="recordAttendance.xib" />
-    <InterfaceDefinition Include="FAQ.xib" />
-    <InterfaceDefinition Include="RegisterVC.xib" />
-    <InterfaceDefinition Include="LoginVC.xib" />
+    <InterfaceDefinition Include="UIViewController\MyBookingViewController.xib" />
+    <InterfaceDefinition Include="UIViewController\NewBookingViewController.xib" />
+    <InterfaceDefinition Include="UIViewController\DateViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -136,18 +134,39 @@
     <Compile Include="UIViewController\RegisterViewController.designer.cs">
       <DependentUpon>RegisterViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyBookingViewController.cs" />
-    <Compile Include="MyBookingViewController.designer.cs">
+    <Compile Include="UIViewController\MyBookingViewController.cs" />
+    <Compile Include="UIViewController\MyBookingViewController.designer.cs">
       <DependentUpon>MyBookingViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegisterVC.cs" />
-    <Compile Include="RegisterVC.designer.cs">
-      <DependentUpon>RegisterVC.cs</DependentUpon>
+    <Compile Include="UIViewController\TableViewController\MyBookingTableSource.cs" />
+    <Compile Include="Data\HelpItemManager.cs" />
+    <Compile Include="Data\IRestService.cs" />
+    <Compile Include="Data\RestService.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Models\WorkshopBooking.cs" />
+    <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\LoginReponse.cs" />
+    <Compile Include="UIViewController\LoadingOverlay.cs" />
+    <Compile Include="UIViewController\MyBookingDetailViewController.cs" />
+    <Compile Include="UIViewController\MyBookingDetailViewController.designer.cs">
+      <DependentUpon>MyBookingDetailViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginVC.cs" />
-    <Compile Include="LoginVC.designer.cs">
-      <DependentUpon>LoginVC.cs</DependentUpon>
+    <Compile Include="UIViewController\TableViewController\MyBookingDetailTableSource.cs" />
+    <Compile Include="UIViewController\TableViewController\MyBookingTableCell.cs" />
+    <Compile Include="UIViewController\TableViewController\MyBookingDetailTableCell.cs" />
+    <Compile Include="UIViewController\NewBookingViewController.cs" />
+    <Compile Include="UIViewController\NewBookingViewController.designer.cs">
+      <DependentUpon>NewBookingViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="UIViewController\DateViewController.cs" />
+    <Compile Include="UIViewController\DateViewController.designer.cs">
+      <DependentUpon>DateViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accessors\WorkshopBookingList.cs" />
+    <Compile Include="Accessors\CampusList.cs" />
+    <Compile Include="Models\Campus.cs" />
+    <Compile Include="UIViewController\AppParam.cs" />
+    <Compile Include="UIViewController\TableViewController\HistoryTableSource.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -157,5 +176,6 @@
     <Folder Include="Exceptions\" />
     <Folder Include="Models\" />
     <Folder Include="UIViewController\" />
+    <Folder Include="UIViewController\TableViewController\" />
   </ItemGroup>
 </Project>

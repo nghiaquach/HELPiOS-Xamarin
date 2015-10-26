@@ -26,9 +26,33 @@ namespace HELPiOS
 		public StudentNotRegistered(string message, Exception innerException) : base(message, innerException) { }
 	}
 
+    public class StudentNotBooked : HelpsBaseException
+    {
+        public StudentNotBooked(string message) : base(message) { }
+        public StudentNotBooked(string message, Exception innerException) : base(message, innerException) { }
+    }
+
     public class WorkshopNotFound : HelpsBaseException
     {
         public WorkshopNotFound(string message) : base(message) { }
         public WorkshopNotFound(string message, Exception innerException) : base(message, innerException) { }
+    }
+
+    public class UnknownWorkshopType : HelpsBaseException
+    {
+        public UnknownWorkshopType(string message) : base(message) { }
+        public UnknownWorkshopType(string message, Exception innerException) : base(message, innerException) { }
+    }
+
+    public class BookingNotCancelled : HelpsBaseException
+    {
+        public BookingNotCancelled(string message) : base(message) { }
+        public BookingNotCancelled(string message, Exception innerException) : base(message, innerException) { }
+    }
+
+    public class CampusNotFound : HelpsBaseException
+    {
+        public CampusNotFound(string message) : base(message) { }
+        public CampusNotFound(string message, Exception innerException) : base(message, innerException) { }
     }
 }

@@ -14,6 +14,13 @@ namespace HELPiOS
 	[Register ("HistoryViewController")]
 	partial class HistoryViewController
 	{
+
+		[Outlet ("historyBookingTable")]
+		UIKit.UITableView historyBookingTable { get; set; }
+
+		[Outlet ("logoutButton")]
+		UIKit.UIBarButtonItem logoutButton { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
 		}

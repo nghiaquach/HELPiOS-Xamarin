@@ -17,6 +17,9 @@ namespace HELPiOS
 		[Outlet ("myBookingTable")]
 		UIKit.UITableView myBookingTableView { get; set; }
 
+		[Outlet ("logoutButton")]
+		UIKit.UIBarButtonItem logoutButton { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
 		}

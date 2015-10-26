@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Linq;
 
 
 namespace HELPiOS
@@ -14,7 +15,7 @@ namespace HELPiOS
 
 	public class DataFacade
 	{
-		private async Task<Response<T>> fetch<T>(string path, Object parameters, Object formData, Action action)
+        private async Task<Response<T>> fetch<T>(string path, Object parameters, Object formData, Action action, JsonConverter converter)
 		{
 			DataSourceInterface db;
 			// STUB
@@ -24,19 +25,14 @@ namespace HELPiOS
 			//   db = new WorkshopCache();
 			// else
 			//   throw some no interwebs exception
-			return await db.fetch<T>(path, parseParameters(parameters), parseFormData(formData), action);
+            return await db.fetch<T>(path, parseParameters(parameters), parseFormData(formData), action, converter);
 		}
 
 		private string parseParameters(Object parameters)
 		{
 			string serialisedParameters = JsonConvert.SerializeObject(parameters);
 			Dictionary<string, string> parsedParameters = JsonConvert.DeserializeObject<Dictionary<string, string>>(serialisedParameters);
-			NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
-			foreach (KeyValuePair<string, string> parameter in parsedParameters)
-			{
-				queryString[parameter.Key] = parameter.Value;
-			}
-			return '?' + queryString.ToString();
+            return '?' + String.Join("&", parsedParameters.Select(x => x.Key + "=" + x.Value));
 		}
 
 		private HttpContent parseFormData(Object formData)
@@ -47,22 +43,27 @@ namespace HELPiOS
 
 		public async Task<Response<T>> get<T>(string path, Object parameters)
 		{
-			return await fetch<T>(path, parameters, null, Action.Get);
+            return await fetch<T>(path, parameters, null, Action.Get, null);
+        }
+
+        public async Task<Response<T>> get<T>(string path, Object parameters, JsonConverter converter)
+        {
+            return await fetch<T>(path, parameters, null, Action.Get, converter);
 		}
 
 		public async Task<Response<T>> post<T>(string path, Object parameters, Object formData)
 		{
-			return await fetch<T>(path, parameters, formData, Action.Post);
+            return await fetch<T>(path, parameters, formData, Action.Post, null);
 		}
 
 		public async Task<Response<T>> put<T>(string path, Object parameters, Object formData)
 		{
-			return await fetch<T>(path, parameters, formData, Action.Put);
+            return await fetch<T>(path, parameters, formData, Action.Put, null);
 		}
 
 		public async Task<Response<T>> delete<T>(string path, Object parameters)
 		{
-			return await fetch<T>(path, parameters, null, Action.Delete);
+            return await fetch<T>(path, parameters, null, Action.Delete, null);
 		}
 
 	}

@@ -14,12 +14,21 @@ namespace HELPiOS
 			db = new DataFacade();
 		}
 
+        public async Task<bool> login(string studentId, string password)
+        {
+            Dictionary<string, Object> formData = new Dictionary<string, Object>();
+            formData.Add("studentId", studentId);
+            formData.Add("password", password);
+            Response<Object> response = await db.post<Object>(apiUri + "login", null, formData);
+            return response.IsSuccess;
+        }
+
 		public async Task<Student> getById(string studentId)
 		{
             Dictionary<string, Object> parameters = new Dictionary<string, Object>();
             parameters.Add("studentID", studentId);
             Response<Student> response = await db.get<Student>(apiUri + "search", parameters);
-			if (response.IsSuccess && response.Results.Count == 1)
+            if (response.IsSuccess && response.Results != null && response.Results.Count == 1)
 				return response.Results[0];
 			else
 				throw new StudentNotFoundException(response.DisplayMessage); /* Crashing here?
@@ -29,7 +38,7 @@ namespace HELPiOS
             */
 		}
 
-		public async void create(Student student)
+        public async Task create(Student student)
 		{
             Response<Object> response = await db.post<Object>(apiUri + "register", null, student);
 			if (!response.IsSuccess)

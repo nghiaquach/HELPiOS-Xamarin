@@ -2,7 +2,7 @@
 
 namespace HELPiOS
 {
-	class Programme : AbstractWorkshop
+    public class Programme : AbstractWorkshop
 	{
 		public string DaysOfWeek { get; set; }
 	}

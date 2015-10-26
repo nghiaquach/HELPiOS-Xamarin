@@ -10,6 +10,8 @@ namespace HELPiOS
 	public class AppDelegate : UIApplicationDelegate
 	{
 		// class-level declarations
+		public static UIStoryboard Storyboard = UIStoryboard.FromName ("Main", null);
+		public static UITabBarController mainTabbarController;
 
 		public override UIWindow Window {
 			get;

@@ -12,41 +12,41 @@ namespace HELPiOS
 	public class Student
 	{
 		[JsonProperty(Required = Required.Always)]
-		public string StudentId { get; set; }
+        public string studentID { get; set; }
 		[JsonProperty(Required = Required.Always)]
-		public DateTime DateOfBirth { get; set; }
+        public DateTime dob { get; set; }
 		[JsonConverter(typeof(GenderConverter))]
-		public Gender? Gender { get; set; }
+        public Gender? gender { get; set; }
 		[JsonProperty(Required = Required.Always)]
 		[JsonConverter(typeof(DegreeConverter))]
-		public Degree Degree { get; set; }
+        public Degree degree { get; set; }
 		[JsonProperty(Required = Required.Always)]
 		[JsonConverter(typeof(StringEnumConverter))]
-		public Status Status { get; set; }
+        public Status status { get; set; }
 		[JsonProperty(Required = Required.Always)]
-		public string FirstLanguage { get; set; }
-		public string Background { get; set; }
+        public string first_language { get; set; }
+        public string background { get; set; }
 		[JsonConverter(typeof(DegreeDetailsConverter))]
-		public DegreeDetails? DegreeDetails { get; set; }
-		public string AltContact { get; set; }
-		public string PreferredName { get; set; }
+        public DegreeDetails? degree_details { get; set; }
+        public string alternative_contact { get; set; }
+        public string preferred_name { get; set; }
 		public bool? HSC { get; set; }
-		public string HSCMark { get; set; }
+        public string HSC_mark { get; set; }
 		public bool? IELTS { get; set; }
-		public string IELTSMark { get; set; }
+        public string IELTS_mark { get; set; }
 		public bool? TOEFL { get; set; }
-		public string TOEFLMark { get; set; }
+        public string TOEFL_mark { get; set; }
 		public bool? TAFE { get; set; }
-		public string TAFEMark { get; set; }
+        public string TAFE_mark { get; set; }
 		public bool? InsearchDEEP { get; set; }
-		public string InsearchDEEPMark { get; set; }
+        public string InsearchDEEP_mark { get; set; }
 		public bool? InsearchDiploma { get; set; }
-		public string InsearchDiplomaMark { get; set; }
-		public bool? FoundationCourse { get; set; }
-		public string FoundationCourseMark { get; set; }
+        public string InsearchDiploma_mark { get; set; }
+        public bool? foundationcourse { get; set; }
+        public string foundationcourse_mark { get; set; }
 		[JsonProperty(Required = Required.Always)]
-		public string CreatorId { get; set; }
-		public DateTime? Created { get; set; }
+        public string creatorId { get; set; }
+        public DateTime? created { get; set; }
 
 		public Student()
 		{
