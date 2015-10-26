@@ -20,6 +20,9 @@ namespace HELPiOS
 		[Outlet ("logoutButton")]
 		UIKit.UIBarButtonItem logoutButton { get; set; }
 
+		[Outlet ("myProfileButton")]
+		UIKit.UIBarButtonItem myProfileButton { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
 		}

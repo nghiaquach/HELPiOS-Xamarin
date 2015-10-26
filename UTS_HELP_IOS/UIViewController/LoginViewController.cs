@@ -44,6 +44,8 @@ namespace HELPiOS
 		}
 
 		public override void ViewDidAppear (bool animate){
+			AppParam.Instance.student = null;
+
 			StudentID.Text = "11875360";
 			Password.Text = "1234567";
 		}
@@ -60,9 +62,12 @@ namespace HELPiOS
 		}
 
 		private async void doLogin(string studentID, string password){
+//for testing
+//			this.doRegistration(studentID);
 
+
+			//loading 
 			LoadingOverlay.Instance.showLoading (this);
-
 
 			StudentList studentList = new StudentList ();
 
@@ -93,6 +98,13 @@ namespace HELPiOS
 
 			//AppDelegate.mainTabbarController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
 			this.PresentViewController(AppDelegate.mainTabbarController, true, null);
+		}
+
+		//do registration
+		private void doRegistration(string studentID){
+			RegisterViewController registerViewController = (RegisterViewController)AppDelegate.Storyboard.InstantiateViewController ("RegisterViewController");
+			registerViewController.currentStudentID = studentID;
+			this.PresentViewController(registerViewController, true, null);
 		}
 	}
 }

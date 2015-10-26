@@ -35,6 +35,12 @@ namespace HELPiOS
 				this.DismissViewControllerAsync(true);
 			};
 
+			//handle logout button action
+			myProfileButton.Clicked += (o, e) => {
+				RegisterViewController registerViewController = (RegisterViewController)AppDelegate.Storyboard.InstantiateViewController ("RegisterViewController");
+				this.PresentViewController(registerViewController, true, null);
+			};
+
 		}
 
 

@@ -8,6 +8,8 @@ namespace HELPiOS
 {
 	partial class HistoryViewController : UIViewController
 	{
+		public WorkshopBooking workshopBooking { get; set;}
+
 		public HistoryViewController (IntPtr handle) : base (handle)
 		{
 		}
@@ -15,6 +17,12 @@ namespace HELPiOS
 		public override void ViewDidAppear (bool animate){
 			// Perform any additional setup after loading the view, typically from a nib.
 			this.showPastBookingList ();
+
+			//handle logout button action
+			logoutButton.Clicked += (o, e) => {
+				this.DismissViewControllerAsync(true);
+			};
+
 		}
 
 		private async void showPastBookingList ()

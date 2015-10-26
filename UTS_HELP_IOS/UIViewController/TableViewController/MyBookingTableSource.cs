@@ -110,25 +110,10 @@ namespace HELPiOS
 					dCell.TextLabel.Text = "No Records";
 					return dCell;
 				} else {
-					cell.UpdateCell (workshopBookingList[indexPath.Row].topic+""
-						, workshopBookingList[indexPath.Row].starting+"");
+					cell.UpdateCell (workshopBookingList [indexPath.Row].topic + ""
+						, workshopBookingList [indexPath.Row].starting + "");
 					
 				}
-				//			} else {
-				//				if (bookedWorkhopList.Count == 0) {
-				//					dCell.TextLabel.Text = "No Records";
-				//					return dCell;
-				//				} 
-				//				else
-				//				{
-				//					cell.UpdateCell (bookedWorkhopList [indexPath.Row].topic + ""
-				//					, bookedWorkhopList [indexPath.Row].starting + "");
-				//					return cell;
-				//				}
-				//			}
-
-
-
 
 			}
 			return cell;
@@ -139,16 +124,7 @@ namespace HELPiOS
 			/// </summary>
 			public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 			{
-				//			WorkshopBooking workshopBooking = workshopBookingList[indexPath.Row];
-				WorkshopBooking workshopBooking = new WorkshopBooking();
-
-//				if (indexPath.Section == 0) {
-//					if(bookingWorkShopList.Count>0)
-//						workshopBooking = bookingWorkShopList [indexPath.Row];
-//				} else {
-//					if(bookedWorkhopList.Count>0)
-//						workshopBooking = bookedWorkhopList [indexPath.Row];
-//				}
+				WorkshopBooking workshopBooking = workshopBookingList[indexPath.Row];
 
 				myBookingDetailViewController = (MyBookingDetailViewController)AppDelegate.Storyboard.InstantiateViewController ("MyBookingDetailViewController");
 

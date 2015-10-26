@@ -29,8 +29,12 @@ namespace HELPiOS
 		{
 			string fullUri = BaseUri + '/' + path;
 				HttpResponseMessage response;
+
+			Console.WriteLine ("request: " + fullUri + parameters + formData.ReadAsStringAsync());
+
 				switch (action)
 				{
+
 				case Action.Post:
 					response = await client.PostAsync(fullUri + parameters, formData);
 					break;
@@ -44,11 +48,15 @@ namespace HELPiOS
 					response = await client.GetAsync(fullUri + parameters);
 					break;
 				}
+				
 				//hide loading 
 				LoadingOverlay.Instance.hideLoading ();
 				if (response.IsSuccessStatusCode)
 				{
-					return await response.Content.ReadAsStringAsync();
+					String responsemsg = await response.Content.ReadAsStringAsync();
+					Console.WriteLine ("reponse: " + responsemsg);
+					
+				return responsemsg;
 				}
 				else
 				{

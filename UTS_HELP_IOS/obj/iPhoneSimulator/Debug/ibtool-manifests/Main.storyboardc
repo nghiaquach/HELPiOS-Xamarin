@@ -7,6 +7,23 @@
 	<key>com.apple.ibtool.document.notices</key>
 	<dict/>
 	<key>com.apple.ibtool.document.warnings</key>
-	<dict/>
+	<dict>
+		<key>u8I-Ac-YhA</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>M8T-T3-V7C</string>
+					<string>u8I-Ac-YhA</string>
+				</array>
+				<key>message</key>
+				<string>Plain Style unsupported in a Navigation Item</string>
+				<key>type</key>
+				<string>IBUnsupportedConfiguration</string>
+				<key>type-value</key>
+				<integer>9</integer>
+			</dict>
+		</array>
+	</dict>
 </dict>
 </plist>

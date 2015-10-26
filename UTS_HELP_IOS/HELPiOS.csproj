@@ -95,7 +95,6 @@
     <InterfaceDefinition Include="setReminder.xib" />
     <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="UIViewController\MyBookingViewController.xib" />
-    <InterfaceDefinition Include="UIViewController\NewBookingViewController.xib" />
     <InterfaceDefinition Include="UIViewController\DateViewController.xib" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +166,13 @@
     <Compile Include="Models\Lecturer.cs" />
     <Compile Include="Models\SessionBooking.cs" />
     <Compile Include="Models\WorkshopSet.cs" />
+    <Compile Include="UIViewController\TableViewController\NewBookingTableSource.cs" />
+    <Compile Include="UIViewController\TableViewController\NewBookingDetailTableCell.cs" />
+    <Compile Include="UIViewController\TableViewController\NewBookingDetailTableSource.cs" />
+    <Compile Include="UIViewController\MyBookingDetailViewController.designer %28copy%29.cs">
+      <DependentUpon>NewBookingDetailViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIViewController\NewBookingDetailViewController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

@@ -8,6 +8,7 @@ namespace HELPiOS
 {
 	public partial class DateViewController : UIViewController
 	{
+		public NSDate selectedDate;
 		public DateViewController () : base ("DateViewController", null)
 		{
 		}
@@ -35,6 +36,8 @@ namespace HELPiOS
 			};
 			//handle back button action
 			rightBarButton.Clicked += (o, e) => {
+				selectedDate = datePicker.Date;
+				Console.WriteLine(datePicker.Date);
 				this.DismissViewControllerAsync(true);
 			};
 		}

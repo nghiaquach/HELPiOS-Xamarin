@@ -10,12 +10,8 @@ namespace HELPiOS
 	{
 
 		List<WorkshopBooking> workshopBookingList = new List<WorkshopBooking> ();
-
-		//		List<WorkshopBooking> bookingWorkShopList = new List<WorkshopBooking>();
-		//		List<WorkshopBooking> bookedWorkhopList = new List<WorkshopBooking>();
-
-		HistoryViewController historyTableSource;
 		UIViewController myBookingViewController;
+		MyBookingDetailViewController myBookingDetailViewController;
 
 		NSString cellIdentifier = new NSString ("TableCell");
 
@@ -23,51 +19,11 @@ namespace HELPiOS
 		{
 			this.workshopBookingList = workshopBookingList;
 			this.myBookingViewController = myBookingViewController;
-			//			this.divideWorkshopList ();
-		}
-		//		//seperate booking and booked workshop
-		//		private void divideWorkshopList(){
-		//			for (int i = 0; i < workshopBookingList.Count; i++) {
-		//				WorkshopBooking wk = workshopBookingList [i];
-		//
-		//				DateTime startingDate = wk.starting;
-		//
-		//				if (this.isBeforeNow (startingDate)) {
-		//					bookedWorkhopList.Add (wk);
-		//				} else
-		//					bookingWorkShopList.Add (wk);
-		//			}
-		//		}
-
-		//Compare the date with current
-		private bool isBeforeNow (DateTime date)
-		{
-			DateTime dt2 = DateTime.Now;
-
-			if (date.Date > dt2.Date) {
-				//It's a later date
-				return false;
-			} else {
-				//It's an earlier or equal date
-				return true;
-			}
-
 		}
 
 		public override nint RowsInSection (UITableView tableview, nint section)
 		{
-			return workshopBookingList.Count;
-			//			if (section == 0) {
-			//				if (bookingWorkShopList.Count == 0) {
-			//					return 1;
-			//				}
-			//				return bookingWorkShopList.Count;
-			//			}
-			//			else
-			//				if (bookedWorkhopList.Count == 0) {
-			//					return 1;
-			//				}
-			//				return bookedWorkhopList.Count;
+			return 5;
 		}
 
 
@@ -78,14 +34,7 @@ namespace HELPiOS
 
 		public override string TitleForHeader (UITableView tableView, nint section)
 		{
-			//			Console.WriteLine (section + " section");
-			//			if (section == 0) {
-			//				return "Booking workshop";
-			//			}
-			//			else
-			//			return "Booked workshop";
-
-			return "Booking workshop";
+			return "Booked workshop";
 		}
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
@@ -113,18 +62,6 @@ namespace HELPiOS
 						, workshopBookingList [indexPath.Row].starting + "");
 					
 				}
-				//			} else {
-				//				if (bookedWorkhopList.Count == 0) {
-				//					dCell.TextLabel.Text = "No Records";
-				//					return dCell;
-				//				} 
-				//				else
-				//				{
-				//					cell.UpdateCell (bookedWorkhopList [indexPath.Row].topic + ""
-				//					, bookedWorkhopList [indexPath.Row].starting + "");
-				//					return cell;
-				//				}
-				//			}
 
 				cell.UpdateCell (workshopBookingList [indexPath.Row].topic + ""
 					, workshopBookingList [indexPath.Row].starting + "");
@@ -139,25 +76,14 @@ namespace HELPiOS
 		/// </summary>
 		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 		{
-			//			WorkshopBooking workshopBooking = workshopBookingList[indexPath.Row];
-			WorkshopBooking workshopBooking = new WorkshopBooking ();
-
-//			if (indexPath.Section == 0) {
-//				if (bookingWorkShopList.Count > 0)
-//					workshopBooking = bookingWorkShopList [indexPath.Row];
-//			} else {
-//				if (bookedWorkhopList.Count > 0)
-//					workshopBooking = bookedWorkhopList [indexPath.Row];
-//			}
-
-//			HistoryViewController = (MyBookingDetailViewController)AppDelegate.Storyboard.InstantiateViewController ("HistoryDetailViewController");
+			WorkshopBooking workshopBooking = workshopBookingList[indexPath.Row];
 
 			//myBookingDetailViewController
-//			if (workshopBooking != null) {
-//				HistoryViewController.ModalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
-//				HistoryViewController.workshopBooking = workshopBooking;
-//				myBookingViewController.PresentViewController (HistoryViewController, true, null);
-//			}
+			if (workshopBooking != null) {
+				myBookingDetailViewController.ModalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
+				myBookingDetailViewController.workshopBooking = workshopBooking;
+				myBookingViewController.PresentViewController (myBookingDetailViewController, true, null);
+			}
 			//deselect row
 			tableView.DeselectRow (indexPath, true);
 		}

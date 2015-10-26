@@ -103,3 +103,5 @@
 /Users/NQ/Desktop/HELPiOS/UTS_HELP_IOS/bin/iPhoneSimulator/Debug/Newtonsoft.Json.dll
 /Users/NQ/Desktop/HELPiOS/UTS_HELP_IOS/bin/iPhoneSimulator/Debug/UTS_HELP_IOS.exe.mdb
 /Users/NQ/Desktop/HELPiOS/UTS_HELP_IOS/bin/iPhoneSimulator/Debug/UTS_HELP_IOS.exe
+/Users/NQ/Desktop/HELPiOS/UTS_HELP_IOS/obj/iPhoneSimulator/Debug/ibtool/Main.storyboardc/RegisterViewController.nib
+/Users/NQ/Desktop/HELPiOS/UTS_HELP_IOS/obj/iPhoneSimulator/Debug/ibtool/Main.storyboardc/cZP-m2-Y3N-view-a6o-fM-DmS.nib

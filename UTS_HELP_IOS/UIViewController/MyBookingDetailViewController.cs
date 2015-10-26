@@ -29,11 +29,6 @@ namespace HELPiOS
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-
-			//disable cancel button for the pass booking
-			if(this.isBeforeNow(workshopBooking.starting)){
-				cancelButton.Hidden = true;
-			}
 			//disable edit for text field
 			descriptionTextView.Editable = false;
 
@@ -41,41 +36,50 @@ namespace HELPiOS
 			backButton.Clicked += (o, e) => {
 				this.DismissViewControllerAsync(true);
 			};
+
+			//handle cancel button action
+			cancelButton.TouchUpInside += (o, e) => {
+
+				this.cancelWorkshopBooking();
+				this.cancelWorkshopWaiting();
+
+				LoadingOverlay.Instance.showLoading(this);
+			};
+
 //			Console.WriteLine ("Load My Bookings Detail View");
 			this.showBookingDetail ();
 			// Perform any additional setup after loading the view, typically from a nib.
 		}
 
 		private void showBookingDetail ()
-		{
-			
+		{			
 			descriptionTextView.Text = workshopBooking.description==null?"No description":workshopBooking.description;
-
-//			HelpManager = new HelpItemManager (new RestService ());
-//			Task<List<WorkshopBooking>> workshopBookingTask = HelpManager.GetWorkshopBookingTasksAsync ();
-//			List<WorkshopBooking> workshopBookingList = await workshopBookingTask;
-//
 			myBookingDetailTable.Source = new MyBookingDetailTableSource (workshopBooking);
 			myBookingDetailTable.ReloadData ();
 		}
 
-		//Compare the date with current
-		private bool isBeforeNow(DateTime date){
-			DateTime dt2 = DateTime.Now;
-
-			if(date.Date > dt2.Date)
-			{
-				//It's a later date
-				return false;
+		private async void cancelWorkshopBooking(){
+			WorkshopBookingList workshopBookingList = new WorkshopBookingList();
+			try{
+//				workshopBookingList.cancelBooking(WebKit,student);
 			}
-			else
-			{
-				//It's an earlier or equal date
-				return true;
+			catch(Exception ex){
+				AppParam.Instance.showAlertMessage ("Workshop Booking", "Cancel workshop booking Fail!");
 			}
 
 		}
-			
+
+		private async void cancelWorkshopWaiting(){
+			WorkshopBookingList workshopBookingList = new WorkshopBookingList();
+			try{
+				//
+//				workshopBookingList.cancelWaiting(WebKit,student);
+			}
+			catch(Exception ex){
+				AppParam.Instance.showAlertMessage ("Workshop Waiting", "Cancel workshop waiting Fail!");
+			}
+
+		}
 	}
 }
 

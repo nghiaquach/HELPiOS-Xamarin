@@ -17,6 +17,9 @@ namespace HELPiOS
 		[Outlet ("searchBar")]
 		UIKit.UISearchBar searchBar { get; set; }
 
+		[Outlet ("searchButton")]
+		UIKit.UIBarButtonItem searchButton { get; set; }
+
 		[Outlet ("segmentControl")]
 		UIKit.UISegmentedControl segmentControl { get; set; }
 
