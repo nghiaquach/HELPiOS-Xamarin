@@ -6,6 +6,7 @@ namespace HELPiOS
 	public class AppParam
 	{
 		public Student student { get; set;}
+		public static string campustName = "";
 		public static string CreatorId = "123456";
 
 		private static AppParam instance;

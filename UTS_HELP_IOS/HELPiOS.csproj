@@ -169,14 +169,18 @@
     <Compile Include="UIViewController\TableViewController\NewBookingTableSource.cs" />
     <Compile Include="UIViewController\TableViewController\NewBookingDetailTableCell.cs" />
     <Compile Include="UIViewController\TableViewController\NewBookingDetailTableSource.cs" />
-    <Compile Include="UIViewController\MyBookingDetailViewController.designer %28copy%29.cs">
+    <Compile Include="UIViewController\NewBookingDetailViewController.cs" />
+    <Compile Include="UIViewController\NewBookingDetailViewController.designer.cs">
       <DependentUpon>NewBookingDetailViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIViewController\NewBookingDetailViewController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\home-7.png" />
+    <BundleResource Include="Resources\star-7.png" />
+    <BundleResource Include="Resources\message-7.png" />
+    <BundleResource Include="Resources\list-simple-7.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceptions\" />

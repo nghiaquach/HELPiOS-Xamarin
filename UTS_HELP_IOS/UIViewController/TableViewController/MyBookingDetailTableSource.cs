@@ -2,6 +2,7 @@
 using UIKit;
 using Foundation;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace HELPiOS
 {
@@ -56,7 +57,7 @@ namespace HELPiOS
 				cell.UpdateCell (@"Title", workshopBooking.topic);
 				break;
 			case 1:
-				cell.UpdateCell (@"Room", workshopBooking.campusID+"");
+				cell.UpdateCell (@"Room", AppParam.campustName);
 				break;
 			case 2:
 				cell.UpdateCell (@"Date Time", workshopBooking.starting+"");
@@ -68,13 +69,12 @@ namespace HELPiOS
 				cell.UpdateCell (@"Place available", workshopBooking.maximum+"");
 				break;
 			}
-
-
-
-
-
 			return cell;
 		}
+			
 	}
+
+
+
 }
 

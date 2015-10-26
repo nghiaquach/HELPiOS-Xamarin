@@ -14,7 +14,6 @@ namespace HELPiOS
 	[Register ("HistoryViewController")]
 	partial class HistoryViewController
 	{
-
 		[Outlet ("historyBookingTable")]
 		UIKit.UITableView historyBookingTable { get; set; }
 

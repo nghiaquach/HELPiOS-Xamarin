@@ -41,7 +41,7 @@ namespace HELPiOS
 			cancelButton.TouchUpInside += (o, e) => {
 
 				this.cancelWorkshopBooking();
-				this.cancelWorkshopWaiting();
+//				this.cancelWorkshopWaiting();
 
 				LoadingOverlay.Instance.showLoading(this);
 			};
@@ -58,10 +58,12 @@ namespace HELPiOS
 			myBookingDetailTable.ReloadData ();
 		}
 
+
+
 		private async void cancelWorkshopBooking(){
 			WorkshopBookingList workshopBookingList = new WorkshopBookingList();
 			try{
-//				workshopBookingList.cancelBooking(WebKit,student);
+//				await workshopBookingList.cancelBooking(workshopBooking,AppParam.Instance.student);
 			}
 			catch(Exception ex){
 				AppParam.Instance.showAlertMessage ("Workshop Booking", "Cancel workshop booking Fail!");
@@ -72,7 +74,7 @@ namespace HELPiOS
 		private async void cancelWorkshopWaiting(){
 			WorkshopBookingList workshopBookingList = new WorkshopBookingList();
 			try{
-				//
+				
 //				workshopBookingList.cancelWaiting(WebKit,student);
 			}
 			catch(Exception ex){

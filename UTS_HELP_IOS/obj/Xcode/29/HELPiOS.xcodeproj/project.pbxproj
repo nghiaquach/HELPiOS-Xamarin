@@ -1,0 +1,362 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2ED39EBE0000000000000000 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3264AB5C0000000000000000 /* UIKit.framework */; };
+		106941F10000000000000000 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13FA4E8F0000000000000000 /* MapKit.framework */; };
+		259CAA890000000000000000 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DB7270000000000000000 /* Foundation.framework */; };
+		19078CD20000000000000000 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C9899700000000000000000 /* CoreGraphics.framework */; };
+		1FEF43060000000000000000 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23804FA40000000000000000 /* Images.xcassets */; };
+		3522AB9E0000000000000000 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38B3B83C0000000000000000 /* LaunchScreen.xib */; };
+		234D6C880000000000000000 /* cancelBooking.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26DE79260000000000000000 /* cancelBooking.xib */; };
+		11782D720000000000000000 /* login.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15093A100000000000000000 /* login.xib */; };
+		2DCDAF460000000000000000 /* makeBooking.xib in Resources */ = {isa = PBXBuildFile; fileRef = 315EBBE40000000000000000 /* makeBooking.xib */; };
+		34BCE5660000000000000000 /* myBookings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 384DF2040000000000000000 /* myBookings.xib */; };
+		22E7A6500000000000000000 /* newBooking.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2678B2EE0000000000000000 /* newBooking.xib */; };
+		1112673A0000000000000000 /* register.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14A373D80000000000000000 /* register.xib */; };
+		3F3D28240000000000000000 /* setReminder.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CE34C200000000000000000 /* setReminder.xib */; };
+		9BD6AE200000000000000000 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4E778000000000000000000 /* Main.storyboard */; };
+		125BB5C30000000000000000 /* MyBookingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15ECC2610000000000000000 /* MyBookingViewController.xib */; };
+		B06B96B00000000000000000 /* DateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E97C60900000000000000000 /* DateViewController.xib */; };
+		3C8FA3D70000000000000000 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20B075000000000000000000 /* Info.plist */; };
+		AA0F33300000000000000000 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = E31FFD100000000000000000 /* Entitlements.plist */; };
+		38CBB41D0000000000000000 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5CC0BB0000000000000000 /* Default-568h@2x.png */; };
+		26F675070000000000000000 /* home-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A8781A50000000000000000 /* home-7.png */; };
+		152135F10000000000000000 /* star-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B2428F0000000000000000 /* star-7.png */; };
+		2332854D0000000000000000 /* message-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 26C391EB0000000000000000 /* message-7.png */; };
+		3143D4A90000000000000000 /* list-simple-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 34D4E1470000000000000000 /* list-simple-7.png */; };
+		3683F6080000000000000000 /* AppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A1502A60000000000000000 /* AppDelegate.h */; };
+		1F3BB2770000000000000000 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CCBF150000000000000000 /* AppDelegate.m */; };
+		19C8ADFC0000000000000000 /* LoginViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 1D59BA9A0000000000000000 /* LoginViewController.h */; };
+		10C49CE30000000000000000 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1455A9810000000000000000 /* LoginViewController.m */; };
+		30AB2B550000000000000000 /* HistoryViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 343C37F30000000000000000 /* HistoryViewController.h */; };
+		3B2B6E130000000000000000 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC7AB10000000000000000 /* HistoryViewController.m */; };
+		3CDA82D40000000000000000 /* FAQViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F72000000000000000000 /* FAQViewController.h */; };
+		33D671BB0000000000000000 /* FAQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37677E590000000000000000 /* FAQViewController.m */; };
+		13BD002D0000000000000000 /* RegisterViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 174E0CCB0000000000000000 /* RegisterViewController.h */; };
+		1A7953310000000000000000 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0A5FCF0000000000000000 /* RegisterViewController.m */; };
+		330AE54B0000000000000000 /* MyBookingViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 369BF1E90000000000000000 /* MyBookingViewController.h */; };
+		83E4DE300000000000000000 /* MyBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF5A8100000000000000000 /* MyBookingViewController.m */; };
+		2493CFB70000000000000000 /* MyBookingDetailViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 2824DC550000000000000000 /* MyBookingDetailViewController.h */; };
+		32A51F130000000000000000 /* MyBookingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36362BB10000000000000000 /* MyBookingDetailViewController.m */; };
+		30C327360000000000000000 /* NewBookingViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 345433D40000000000000000 /* NewBookingViewController.h */; };
+		242E097F0000000000000000 /* NewBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BF161D0000000000000000 /* NewBookingViewController.m */; };
+		25DD1E400000000000000000 /* DateViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 296E2ADE0000000000000000 /* DateViewController.h */; };
+		3CBF9B990000000000000000 /* DateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A837000000000000000000 /* DateViewController.m */; };
+		73FDE5700000000000000000 /* NewBookingDetailViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = AD0EAF500000000000000000 /* NewBookingDetailViewController.h */; };
+		18E23A510000000000000000 /* NewBookingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7346EF0000000000000000 /* NewBookingDetailViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		21C0BEEE0000000000000000 /* HELPiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "HELPiOS.app"; path = "HELPiOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3264AB5C0000000000000000 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "UIKit.framework"; path = "System/Library/Frameworks/UIKit.framework"; sourceTree = SDKROOT; };
+		13FA4E8F0000000000000000 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "MapKit.framework"; path = "System/Library/Frameworks/MapKit.framework"; sourceTree = SDKROOT; };
+		292DB7270000000000000000 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Foundation.framework"; path = "System/Library/Frameworks/Foundation.framework"; sourceTree = SDKROOT; };
+		1C9899700000000000000000 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreGraphics.framework"; path = "System/Library/Frameworks/CoreGraphics.framework"; sourceTree = SDKROOT; };
+		23804FA40000000000000000 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Images.xcassets"; path = "Images.xcassets"; sourceTree = "<group>"; };
+		38B3B83C0000000000000000 /* LaunchScreen.xib */ = {isa = PBXFileReference; name = "LaunchScreen.xib"; path = "LaunchScreen.xib"; sourceTree = "<group>"; };
+		26DE79260000000000000000 /* cancelBooking.xib */ = {isa = PBXFileReference; name = "cancelBooking.xib"; path = "cancelBooking.xib"; sourceTree = "<group>"; };
+		15093A100000000000000000 /* login.xib */ = {isa = PBXFileReference; name = "login.xib"; path = "login.xib"; sourceTree = "<group>"; };
+		315EBBE40000000000000000 /* makeBooking.xib */ = {isa = PBXFileReference; name = "makeBooking.xib"; path = "makeBooking.xib"; sourceTree = "<group>"; };
+		384DF2040000000000000000 /* myBookings.xib */ = {isa = PBXFileReference; name = "myBookings.xib"; path = "myBookings.xib"; sourceTree = "<group>"; };
+		2678B2EE0000000000000000 /* newBooking.xib */ = {isa = PBXFileReference; name = "newBooking.xib"; path = "newBooking.xib"; sourceTree = "<group>"; };
+		14A373D80000000000000000 /* register.xib */ = {isa = PBXFileReference; name = "register.xib"; path = "register.xib"; sourceTree = "<group>"; };
+		2CE34C200000000000000000 /* setReminder.xib */ = {isa = PBXFileReference; name = "setReminder.xib"; path = "setReminder.xib"; sourceTree = "<group>"; };
+		D4E778000000000000000000 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Main.storyboard"; path = "Main.storyboard"; sourceTree = "<group>"; };
+		15ECC2610000000000000000 /* MyBookingViewController.xib */ = {isa = PBXFileReference; name = "MyBookingViewController.xib"; path = "UIViewController/MyBookingViewController.xib"; sourceTree = "<group>"; };
+		E97C60900000000000000000 /* DateViewController.xib */ = {isa = PBXFileReference; name = "DateViewController.xib"; path = "UIViewController/DateViewController.xib"; sourceTree = "<group>"; };
+		20B075000000000000000000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info.plist"; path = "Info.plist"; sourceTree = "<group>"; };
+		E31FFD100000000000000000 /* Entitlements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Entitlements.plist"; path = "Entitlements.plist"; sourceTree = "<group>"; };
+		3C5CC0BB0000000000000000 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		2A8781A50000000000000000 /* home-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "home-7.png"; path = "home-7.png"; sourceTree = "<group>"; };
+		18B2428F0000000000000000 /* star-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star-7.png"; path = "star-7.png"; sourceTree = "<group>"; };
+		26C391EB0000000000000000 /* message-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "message-7.png"; path = "message-7.png"; sourceTree = "<group>"; };
+		34D4E1470000000000000000 /* list-simple-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "list-simple-7.png"; path = "list-simple-7.png"; sourceTree = "<group>"; };
+		3A1502A60000000000000000 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AppDelegate.h"; path = "AppDelegate.h"; sourceTree = "<group>"; };
+		22CCBF150000000000000000 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "AppDelegate.m"; path = "AppDelegate.m"; sourceTree = "<group>"; };
+		1D59BA9A0000000000000000 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "LoginViewController.h"; path = "LoginViewController.h"; sourceTree = "<group>"; };
+		1455A9810000000000000000 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "LoginViewController.m"; path = "LoginViewController.m"; sourceTree = "<group>"; };
+		343C37F30000000000000000 /* HistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "HistoryViewController.h"; path = "HistoryViewController.h"; sourceTree = "<group>"; };
+		3EBC7AB10000000000000000 /* HistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "HistoryViewController.m"; path = "HistoryViewController.m"; sourceTree = "<group>"; };
+		6B8F72000000000000000000 /* FAQViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FAQViewController.h"; path = "FAQViewController.h"; sourceTree = "<group>"; };
+		37677E590000000000000000 /* FAQViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "FAQViewController.m"; path = "FAQViewController.m"; sourceTree = "<group>"; };
+		174E0CCB0000000000000000 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "RegisterViewController.h"; path = "RegisterViewController.h"; sourceTree = "<group>"; };
+		1E0A5FCF0000000000000000 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "RegisterViewController.m"; path = "RegisterViewController.m"; sourceTree = "<group>"; };
+		369BF1E90000000000000000 /* MyBookingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MyBookingViewController.h"; path = "MyBookingViewController.h"; sourceTree = "<group>"; };
+		BCF5A8100000000000000000 /* MyBookingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "MyBookingViewController.m"; path = "MyBookingViewController.m"; sourceTree = "<group>"; };
+		2824DC550000000000000000 /* MyBookingDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MyBookingDetailViewController.h"; path = "MyBookingDetailViewController.h"; sourceTree = "<group>"; };
+		36362BB10000000000000000 /* MyBookingDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "MyBookingDetailViewController.m"; path = "MyBookingDetailViewController.m"; sourceTree = "<group>"; };
+		345433D40000000000000000 /* NewBookingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NewBookingViewController.h"; path = "NewBookingViewController.h"; sourceTree = "<group>"; };
+		27BF161D0000000000000000 /* NewBookingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NewBookingViewController.m"; path = "NewBookingViewController.m"; sourceTree = "<group>"; };
+		296E2ADE0000000000000000 /* DateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DateViewController.h"; path = "DateViewController.h"; sourceTree = "<group>"; };
+		50A837000000000000000000 /* DateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "DateViewController.m"; path = "DateViewController.m"; sourceTree = "<group>"; };
+		AD0EAF500000000000000000 /* NewBookingDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NewBookingDetailViewController.h"; path = "NewBookingDetailViewController.h"; sourceTree = "<group>"; };
+		1C7346EF0000000000000000 /* NewBookingDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NewBookingDetailViewController.m"; path = "NewBookingDetailViewController.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3037D4820000000000000000 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2ED39EBE0000000000000000 /* UIKit.framework in Frameworks */,
+				106941F10000000000000000 /* MapKit.framework in Frameworks */,
+				259CAA890000000000000000 /* Foundation.framework in Frameworks */,
+				19078CD20000000000000000 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		105146100000000000000000 = {
+			isa = PBXGroup;
+			children = (
+				3AEAFA5C0000000000000000 /* HELPiOS */,
+				1B046BEA0000000000000000 /* Frameworks */,
+				59E203600000000000000000 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		59E203600000000000000000 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				21C0BEEE0000000000000000 /* HELPiOS.app */,
+			);
+			name = "Products";
+			sourceTree = "<group>";
+		};
+		1B046BEA0000000000000000 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3264AB5C0000000000000000 /* UIKit.framework */,
+				13FA4E8F0000000000000000 /* MapKit.framework */,
+				292DB7270000000000000000 /* Foundation.framework */,
+				1C9899700000000000000000 /* CoreGraphics.framework */,
+			);
+			name = "Frameworks";
+			sourceTree = "<group>";
+		};
+		3AEAFA5C0000000000000000 /* HELPiOS */ = {
+			isa = PBXGroup;
+			children = (
+				3A1502A60000000000000000 /* AppDelegate.h */,
+				26DE79260000000000000000 /* cancelBooking.xib */,
+				296E2ADE0000000000000000 /* DateViewController.h */,
+				3C5CC0BB0000000000000000 /* Default-568h@2x.png */,
+				E31FFD100000000000000000 /* Entitlements.plist */,
+				6B8F72000000000000000000 /* FAQViewController.h */,
+				343C37F30000000000000000 /* HistoryViewController.h */,
+				2A8781A50000000000000000 /* home-7.png */,
+				23804FA40000000000000000 /* Images.xcassets */,
+				20B075000000000000000000 /* Info.plist */,
+				38B3B83C0000000000000000 /* LaunchScreen.xib */,
+				34D4E1470000000000000000 /* list-simple-7.png */,
+				15093A100000000000000000 /* login.xib */,
+				1D59BA9A0000000000000000 /* LoginViewController.h */,
+				D4E778000000000000000000 /* Main.storyboard */,
+				315EBBE40000000000000000 /* makeBooking.xib */,
+				26C391EB0000000000000000 /* message-7.png */,
+				2824DC550000000000000000 /* MyBookingDetailViewController.h */,
+				384DF2040000000000000000 /* myBookings.xib */,
+				369BF1E90000000000000000 /* MyBookingViewController.h */,
+				2678B2EE0000000000000000 /* newBooking.xib */,
+				AD0EAF500000000000000000 /* NewBookingDetailViewController.h */,
+				345433D40000000000000000 /* NewBookingViewController.h */,
+				14A373D80000000000000000 /* register.xib */,
+				174E0CCB0000000000000000 /* RegisterViewController.h */,
+				2CE34C200000000000000000 /* setReminder.xib */,
+				18B2428F0000000000000000 /* star-7.png */,
+				166A847A0000000000000000 /* Supporting Files */,
+				2B530E150000000000000000 /* UIViewController */,
+			);
+			name = "HELPiOS";
+			sourceTree = "<group>";
+		};
+		2B530E150000000000000000 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E97C60900000000000000000 /* DateViewController.xib */,
+				15ECC2610000000000000000 /* MyBookingViewController.xib */,
+			);
+			name = "UIViewController";
+			sourceTree = "<group>";
+		};
+		166A847A0000000000000000 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				22CCBF150000000000000000 /* AppDelegate.m */,
+				50A837000000000000000000 /* DateViewController.m */,
+				37677E590000000000000000 /* FAQViewController.m */,
+				3EBC7AB10000000000000000 /* HistoryViewController.m */,
+				1455A9810000000000000000 /* LoginViewController.m */,
+				36362BB10000000000000000 /* MyBookingDetailViewController.m */,
+				BCF5A8100000000000000000 /* MyBookingViewController.m */,
+				1C7346EF0000000000000000 /* NewBookingDetailViewController.m */,
+				27BF161D0000000000000000 /* NewBookingViewController.m */,
+				1E0A5FCF0000000000000000 /* RegisterViewController.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		251EE8700000000000000000 /* HELPiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 170D99140000000000000000 /* Build configuration list for PBXNativeTarget "HELPiOS" */;
+			buildPhases = (
+				1E62956C0000000000000000 /* Sources */,
+				3037D4820000000000000000 /* Frameworks */,
+				74D34F700000000000000000 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HELPiOS";
+			productName = "HELPiOS";
+			productReference = 21C0BEEE0000000000000000 /* HELPiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1A6BC2960000000000000000 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C5A733A00000000000000000 /* Build configuration list for PBXProject "HELPiOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 105146100000000000000000;
+			productRefGroup = 59E203600000000000000000 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				251EE8700000000000000000 /* HELPiOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		74D34F700000000000000000 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FEF43060000000000000000 /* Images.xcassets in Resources */,
+				3522AB9E0000000000000000 /* LaunchScreen.xib in Resources */,
+				234D6C880000000000000000 /* cancelBooking.xib in Resources */,
+				11782D720000000000000000 /* login.xib in Resources */,
+				2DCDAF460000000000000000 /* makeBooking.xib in Resources */,
+				34BCE5660000000000000000 /* myBookings.xib in Resources */,
+				22E7A6500000000000000000 /* newBooking.xib in Resources */,
+				1112673A0000000000000000 /* register.xib in Resources */,
+				3F3D28240000000000000000 /* setReminder.xib in Resources */,
+				9BD6AE200000000000000000 /* Main.storyboard in Resources */,
+				125BB5C30000000000000000 /* MyBookingViewController.xib in Resources */,
+				B06B96B00000000000000000 /* DateViewController.xib in Resources */,
+				3C8FA3D70000000000000000 /* Info.plist in Resources */,
+				AA0F33300000000000000000 /* Entitlements.plist in Resources */,
+				38CBB41D0000000000000000 /* Default-568h@2x.png in Resources */,
+				26F675070000000000000000 /* home-7.png in Resources */,
+				152135F10000000000000000 /* star-7.png in Resources */,
+				2332854D0000000000000000 /* message-7.png in Resources */,
+				3143D4A90000000000000000 /* list-simple-7.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1E62956C0000000000000000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3683F6080000000000000000 /* AppDelegate.h in Sources */,
+				1F3BB2770000000000000000 /* AppDelegate.m in Sources */,
+				19C8ADFC0000000000000000 /* LoginViewController.h in Sources */,
+				10C49CE30000000000000000 /* LoginViewController.m in Sources */,
+				30AB2B550000000000000000 /* HistoryViewController.h in Sources */,
+				3B2B6E130000000000000000 /* HistoryViewController.m in Sources */,
+				3CDA82D40000000000000000 /* FAQViewController.h in Sources */,
+				33D671BB0000000000000000 /* FAQViewController.m in Sources */,
+				13BD002D0000000000000000 /* RegisterViewController.h in Sources */,
+				1A7953310000000000000000 /* RegisterViewController.m in Sources */,
+				330AE54B0000000000000000 /* MyBookingViewController.h in Sources */,
+				83E4DE300000000000000000 /* MyBookingViewController.m in Sources */,
+				2493CFB70000000000000000 /* MyBookingDetailViewController.h in Sources */,
+				32A51F130000000000000000 /* MyBookingDetailViewController.m in Sources */,
+				30C327360000000000000000 /* NewBookingViewController.h in Sources */,
+				242E097F0000000000000000 /* NewBookingViewController.m in Sources */,
+				25DD1E400000000000000000 /* DateViewController.h in Sources */,
+				3CBF9B990000000000000000 /* DateViewController.m in Sources */,
+				73FDE5700000000000000000 /* NewBookingDetailViewController.h in Sources */,
+				18E23A510000000000000000 /* NewBookingDetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		33631AE80000000000000000 /* MonoTouch */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				SDKROOT = iphoneos;
+			};
+			name = MonoTouch;
+		};
+		1A74D6000000000000000000 /* MonoTouch */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				PRODUCT_NAME = "HELPiOS";
+				WRAPPER_EXTENSION = app;
+			};
+			name = MonoTouch;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C5A733A00000000000000000 /* Build configuration list for PBXProject "HELPiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33631AE80000000000000000 /* MonoTouch */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = MonoTouch;
+		};
+		170D99140000000000000000 /* Build configuration list for PBXNativeTarget "HELPiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A74D6000000000000000000 /* MonoTouch */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = MonoTouch;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1A6BC2960000000000000000 /* Project object */;
+}

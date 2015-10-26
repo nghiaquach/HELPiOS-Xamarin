@@ -105,3 +105,9 @@
 /Users/NQ/Desktop/HELPiOS/UTS_HELP_IOS/bin/iPhoneSimulator/Debug/UTS_HELP_IOS.exe
 /Users/NQ/Desktop/HELPiOS/UTS_HELP_IOS/obj/iPhoneSimulator/Debug/ibtool/Main.storyboardc/RegisterViewController.nib
 /Users/NQ/Desktop/HELPiOS/UTS_HELP_IOS/obj/iPhoneSimulator/Debug/ibtool/Main.storyboardc/cZP-m2-Y3N-view-a6o-fM-DmS.nib
+/Users/NQ/Desktop/HELPiOS/UTS_HELP_IOS/obj/iPhoneSimulator/Debug/ibtool/Main.storyboardc/NewBookingDetailViewController.nib
+/Users/NQ/Desktop/HELPiOS/UTS_HELP_IOS/obj/iPhoneSimulator/Debug/ibtool/Main.storyboardc/mOE-Sy-15Q-view-mVB-RD-EZH.nib
+/Users/NQ/Desktop/HELPiOS/UTS_HELP_IOS/obj/iPhoneSimulator/Debug/optimized/home-7.png
+/Users/NQ/Desktop/HELPiOS/UTS_HELP_IOS/obj/iPhoneSimulator/Debug/optimized/star-7.png
+/Users/NQ/Desktop/HELPiOS/UTS_HELP_IOS/obj/iPhoneSimulator/Debug/optimized/message-7.png
+/Users/NQ/Desktop/HELPiOS/UTS_HELP_IOS/obj/iPhoneSimulator/Debug/optimized/list-simple-7.png

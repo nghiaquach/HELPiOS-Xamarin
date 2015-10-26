@@ -49,8 +49,6 @@ namespace HELPiOS
 			this.showUpcomingBookingList ();
 		}
 
-
-
 		private async void showUpcomingBookingList ()
 		{
 			LoadingOverlay.Instance.showLoading (this);
@@ -60,7 +58,6 @@ namespace HELPiOS
 			Student student = AppParam.Instance.student;
 
 			List<WorkshopBooking> wkBookingList = await workshopBookingList.getUpcomingByStudent (student);
-
 			myBookingTableView.Source = new MyBookingTableSource (this,wkBookingList);
 			myBookingTableView.ReloadData ();
 		}

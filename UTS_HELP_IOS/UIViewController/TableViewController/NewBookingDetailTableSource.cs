@@ -29,18 +29,6 @@ namespace HELPiOS
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
-			//			UITableViewCell cell = tableView.DequeueReusableCell (CellIdentifier);
-			//			WorkshopBooking workshopBooking = workshopBookingList[indexPath.Row];
-			//
-			//			//---- if there are no cells to reuse, create a new one
-			//			if (cell == null)
-			//			{ cell = new UITableViewCell (UITableViewCellStyle.Default, CellIdentifier); }
-			//
-			//			cell.TextLabel.Text = workshopBooking.topic;
-			//
-			//			return cell;
-
-			// request a recycled cell to save memory
 
 			// request a recycled cell to save memory
 			MyBookingDetailTableCell cell = tableView.DequeueReusableCell (cellIdentifier) as MyBookingDetailTableCell;
@@ -69,12 +57,9 @@ namespace HELPiOS
 				break;
 			}
 
-
-
-
-
 			return cell;
 		}
+
 	}
 }
 

@@ -66,7 +66,7 @@ namespace HELPiOS
 
 			};
 
-			searchBar.OnEditingStarted += (s, e) => {
+			searchBar.TextChanged += (s, e) => {
 
 				if(searchBar.Text.Equals("")){
 					searchButton.Enabled = false;
@@ -78,12 +78,15 @@ namespace HELPiOS
 					//AppDelegate.mainTabbarController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
 					this.PresentViewController(dateVC, true, null);
 				}
-			};
 
-			searchBar.OnEditingStopped += (s, e) => {
 				if(!searchBar.Text.Equals(""))
 				searchButton.Enabled = true;
 			};
+
+//			searchBar.Sho += (s, e) => {
+//				if(!searchBar.Text.Equals(""))
+//				searchButton.Enabled = true;
+//			};
 
 
 			searchButton.Clicked += (o, e)  => {
@@ -94,6 +97,12 @@ namespace HELPiOS
 				}
 				else if(selectedItem == SearchSelection.Date){
 					this.searchByTopic();
+				}
+				else if(selectedItem == SearchSelection.Location){
+					this.searchByLocation();
+				}
+				else if(selectedItem == SearchSelection.Tutor){
+					this.searchByLecturer();
 				}
 
 			};
@@ -126,6 +135,32 @@ namespace HELPiOS
 			if (!searchBar.Text.Equals("")) {
 				WorkshopList workshopList = new WorkshopList();
 				List<AbstractWorkshop> ab =  await workshopList.searchByStartDate(this.toDateFromNSDate(dateVC.selectedDate));
+
+				Console.WriteLine("Result: "+ ab.Count);
+			}
+		}
+
+		//search by date
+		private async void searchByLocation(){
+			LoadingOverlay.Instance.showLoading(this);
+			if (!searchBar.Text.Equals("")) {
+				WorkshopList workshopList = new WorkshopList();
+				Campus cmp = new Campus ();
+				List<AbstractWorkshop> ab =  await workshopList.searchByLocation(cmp);
+
+				Console.WriteLine("Result: "+ ab.Count);
+			}
+		}
+
+		//search by date
+		private async void searchByLecturer(){
+			LoadingOverlay.Instance.showLoading(this);
+			if (!searchBar.Text.Equals("")) {
+				WorkshopList workshopList = new WorkshopList();
+
+				Lecturer lecturer = new Lecturer ();
+
+				List<AbstractWorkshop> ab =  await workshopList.searchByLecturer(lecturer);
 
 				Console.WriteLine("Result: "+ ab.Count);
 			}

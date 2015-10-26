@@ -3,6 +3,7 @@ using UIKit;
 using Foundation;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace HELPiOS
 {
@@ -22,53 +23,12 @@ namespace HELPiOS
 		{
 			this.workshopBookingList = workshopBookingList;
 			this.myBookingViewController = myBookingViewController;
-			//			this.divideWorkshopList ();
 		}
-		//		//seperate booking and booked workshop 
-		//		private void divideWorkshopList(){
-		//			for (int i = 0; i < workshopBookingList.Count; i++) {
-		//				WorkshopBooking wk = workshopBookingList [i];
-		//
-		//				DateTime startingDate = wk.starting;
-		//
-		//				if (this.isBeforeNow (startingDate)) {
-		//					bookedWorkhopList.Add (wk);
-		//				} else
-		//					bookingWorkShopList.Add (wk);
-		//			}
-		//		}
-
-		//Compare the date with current
-		private bool isBeforeNow(DateTime date){
-			DateTime dt2 = DateTime.Now;
-
-			if(date.Date > dt2.Date)
-			{
-				//It's a later date
-				return false;
-			}
-			else
-			{
-				//It's an earlier or equal date
-				return true;
-			}
-
-		}
+			
 
 		public override nint RowsInSection (UITableView tableview, nint section)
 		{
 			return workshopBookingList.Count;
-			//			if (section == 0) {
-			//				if (bookingWorkShopList.Count == 0) {
-			//					return 1;
-			//				}
-			//				return bookingWorkShopList.Count;
-			//			}
-			//			else
-			//				if (bookedWorkhopList.Count == 0) {
-			//					return 1;
-			//				}
-			//				return bookedWorkhopList.Count;
 		}
 
 
@@ -79,13 +39,6 @@ namespace HELPiOS
 
 		public override string TitleForHeader (UITableView tableView, nint section)
 		{
-			//			Console.WriteLine (section + " section");
-			//			if (section == 0) {
-			//				return "Booking workshop";
-			//			}
-			//			else
-			//			return "Booked workshop";
-
 			return "Booking workshop";
 		}
 
@@ -122,7 +75,7 @@ namespace HELPiOS
 			/// <summary>
 			/// Called when a row is touched
 			/// </summary>
-			public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
+			public async override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 			{
 				WorkshopBooking workshopBooking = workshopBookingList[indexPath.Row];
 
@@ -130,6 +83,7 @@ namespace HELPiOS
 
 				//myBookingDetailViewController
 				if (workshopBooking != null) {
+					AppParam.campustName = await this.getCampusRoom (workshopBooking.campusID);
 					myBookingDetailViewController.ModalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
 					myBookingDetailViewController.workshopBooking = workshopBooking;
 					myBookingViewController.PresentViewController (myBookingDetailViewController, true, null);
@@ -137,6 +91,16 @@ namespace HELPiOS
 				//deselect row
 				tableView.DeselectRow (indexPath, true);
 			}
+
+			private async Task<string> getCampusRoom(int campusId){
+				CampusList campusList = new CampusList ();
+				Campus campus = await campusList.getById (campusId);
+				if (campus == null) {
+					return "";
+				}
+				return campus.campus;
+			}
+
 		}
 	}
 

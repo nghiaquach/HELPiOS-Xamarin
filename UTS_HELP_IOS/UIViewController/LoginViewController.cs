@@ -85,7 +85,7 @@ namespace HELPiOS
 					this.showNext ();
 				} else {
 					//show register screen
-
+					this.doRegistration(studentID);
 				}
 			} else {
 				AppParam.Instance.showAlertMessage ("Login Status","Student ID and Password are not match!");
