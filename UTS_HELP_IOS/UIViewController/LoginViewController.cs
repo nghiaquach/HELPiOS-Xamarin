@@ -10,9 +10,6 @@ namespace HELPiOS
 {
 	public partial class LoginViewController : UIViewController
 	{
-		
-		public static HelpItemManager HelpManager { get; private set; }
-//		LoadingOverlay loadingOverlay;
 
 		public LoginViewController (IntPtr handle): base (handle)
 		{
@@ -32,31 +29,23 @@ namespace HELPiOS
 
 //			//When we push the button
 			this.LoginButton.TouchUpInside += (o, e) => {
-				//for test
-				this.showNext();
-				Console.WriteLine("Login Button Pressed!");
-
 				//do login
 				string studentId = StudentID.Text;
 				string password = Password.Text;
 
-				Login login = new Login();
-				login.studentId = studentId;
-				login.password = password;
-
-//				if(validation(studentId,password)){
-//					this.doLogin(login);
-//				}
-//				else{
-//					AppParam.Instance.showAlertMessage("Login Fail","Please enter studentId or Password");
-//				}
+				if(validation(studentId,password)){
+					this.doLogin(studentId,password);
+				}
+				else{
+					AppParam.Instance.showAlertMessage("Login Fail","Please enter studentId or Password");
+				}
 			};
 			// Perform any additional setup after loading the view, typically from a nib.
 		}
 
 		public override void ViewDidAppear (bool animate){
-			StudentID.Text = "";
-			Password.Text = "";
+			StudentID.Text = "11875360";
+			Password.Text = "1234567";
 		}
 
 		private bool validation(string studentId, string password){
@@ -70,16 +59,29 @@ namespace HELPiOS
 			return true;
 		}
 
-		private async void doLogin(Login login){
+		private async void doLogin(string studentID, string password){
 
 			LoadingOverlay.Instance.showLoading (this);
 
-			HelpManager = new HelpItemManager (new RestService ());
-			Task<bool> loginReponseTask = HelpManager.doLoginTasksAsync(login);
-			bool loginStatus = await loginReponseTask;
+
+			StudentList studentList = new StudentList ();
+
+
+			bool loginStatus = await studentList.login(studentID,password);
 
 			if (loginStatus) {
-				this.showNext ();
+
+				//Get student profile from api
+				LoadingOverlay.Instance.showLoading (this);
+				Student std = await studentList.getById (studentID);
+
+				if (std != null) {
+					AppParam.Instance.student = std;
+					this.showNext ();
+				} else {
+					//show register screen
+
+				}
 			} else {
 				AppParam.Instance.showAlertMessage ("Login Status","Student ID and Password are not match!");
 			}
@@ -92,38 +94,6 @@ namespace HELPiOS
 			//AppDelegate.mainTabbarController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
 			this.PresentViewController(AppDelegate.mainTabbarController, true, null);
 		}
-
-
-//		public void showLoading(){
-//			var bounds = UIScreen.MainScreen.Bounds; // portrait bounds
-//			if (UIApplication.SharedApplication.StatusBarOrientation == UIInterfaceOrientation.LandscapeLeft || UIApplication.SharedApplication.StatusBarOrientation == UIInterfaceOrientation.LandscapeRight) {
-//				bounds.Size = new CGSize(bounds.Size.Height, bounds.Size.Width);
-//			}
-//			// show the loading overlay on the UI thread using the correct orientation sizing
-//			this.loadingOverlay = new LoadingOverlay (bounds);
-//			this.View.Add ( this.loadingOverlay );
-//		}
-//
-//		public void hideLoading(){
-//			loadingOverlay.Hide ();
-//		}
-
-
-
-//			try{
-//
-//				Task<WorkshopBooking> workshopBookingTask = workshopList.getByStudentId ("11875360");
-//				//WorkshopBooking workshopBooking = await workshopBookingTask;
-//
-//				//foreach (WorkshopBooking wb in workshopBooking){
-//				//Console.WriteLine (workshopBooking.description);		
-//				//}
-//
-//			}
-//			catch(Exception exception){
-//
-//			}
-//		}
 	}
 }
 

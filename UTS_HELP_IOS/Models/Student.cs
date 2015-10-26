@@ -13,8 +13,7 @@ namespace HELPiOS
 	{
 		[JsonProperty(Required = Required.Always)]
         public string studentID { get; set; }
-		[JsonProperty(Required = Required.Always)]
-        public DateTime dob { get; set; }
+        public DateTime? dob { get; set; }
 		[JsonConverter(typeof(GenderConverter))]
         public Gender? gender { get; set; }
 		[JsonProperty(Required = Required.Always)]
@@ -96,8 +95,11 @@ namespace HELPiOS
 			case DegreeDetails.FourthYr:
 				writer.WriteValue("4th");
 				break;
+                case DegreeDetails.FifthYr:
+                    writer.WriteValue("5th");
+                    break;
 			default:
-				writer.WriteValue("5th");
+                    writer.WriteNull();
 				break;
 			}
 		}
@@ -110,7 +112,8 @@ namespace HELPiOS
 			case "2nd": return DegreeDetails.SecondYr;
 			case "3rd": return DegreeDetails.ThirdYr;
 			case "4th": return DegreeDetails.FourthYr;
-			default: return DegreeDetails.FifthYr;
+                case "5th": return DegreeDetails.FifthYr;
+                default: return null;
 			}
 		}
 	}
@@ -127,19 +130,23 @@ namespace HELPiOS
 			case Gender.Female:
 				writer.WriteValue('F');
 				break;
+                case Gender.Other:
+                    writer.WriteValue('X');
+                    break;
 			default:
-				writer.WriteValue('X');
+                    writer.WriteNull();
 				break;
 			}
 		}
 
 		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
 		{
-			switch ((char)reader.Value)
+            switch ((string)reader.Value)
 			{
-			case 'M': return Gender.Male;
-			case 'F': return Gender.Female;
-			default: return Gender.Other;
+                case "M": return Gender.Male;
+                case "F": return Gender.Female;
+                case "X": return Gender.Other;
+                default: return null;
 			}
 		}
 	}

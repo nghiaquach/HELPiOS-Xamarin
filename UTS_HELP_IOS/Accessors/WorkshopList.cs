@@ -14,14 +14,14 @@ namespace HELPiOS
 			db = new DataFacade();
 		}
 
-        public async Task<AbstractWorkshop> getById(int id)
+        public async Task<T> getById<T>(int id) where T : AbstractWorkshop
         {
             Dictionary<string, Object> parameters = new Dictionary<string, Object>();
             parameters.Add("active", true);
-            Response<AbstractWorkshop> response = await db.get<AbstractWorkshop>(apiUri + "/search", parameters, new AbstractWorkshopConverter());
+            Response<T> response = await db.get<T>(apiUri + "/search", parameters, new AbstractWorkshopConverter());
             if (response.IsSuccess)
             {
-                foreach (AbstractWorkshop workshop in response.Results)
+                foreach (T workshop in response.Results)
                 {
                     if (workshop.WorkshopId == id)
                         return workshop;
@@ -37,7 +37,10 @@ namespace HELPiOS
         private async Task<List<AbstractWorkshop>> search(Dictionary<string, Object> parameters)
         {
             if (!parameters.ContainsKey("startingDtBegin"))
-                parameters.Add("startingDtBegin", DateTime.Now);
+            {
+                parameters.Add("startingDtBegin", new DateTime());
+                parameters.Add("startingDtEnd", DateTime.Now);
+            }
             parameters.Add("active", true);
             Response<AbstractWorkshop> response = await db.get<AbstractWorkshop>(apiUri + "/search", parameters, new AbstractWorkshopConverter());
             if (response.IsSuccess && response.Results != null)
@@ -71,17 +74,17 @@ namespace HELPiOS
             return await search(parameters);
         }
 
-        public async Task<List<AbstractWorkshop>> searchByLocation(string location)
+        public async Task<List<AbstractWorkshop>> searchByLocation(Campus campus)
         {
             Dictionary<string, Object> parameters = new Dictionary<string, Object>();
-            parameters.Add("campusID", new CampusList().filterByName(location));
+            parameters.Add("campusID", campus.id);
             return await search(parameters);
         }
 
-        public async Task<List<AbstractWorkshop>> searchByLecturer(string lecturer)
+        public async Task<List<AbstractWorkshop>> searchByLecturer(Lecturer lecturer)
         {
             Dictionary<string, Object> parameters = new Dictionary<string, Object>();
-            parameters.Add("lecturer", lecturer);
+            parameters.Add("lecturerID", lecturer.id);
             return await search(parameters);
         }
 	}

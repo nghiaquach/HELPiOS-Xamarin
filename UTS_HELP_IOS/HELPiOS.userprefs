@@ -1,6 +1,17 @@
 ﻿<Properties StartupItem="HELPiOS.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.9.0" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="UIViewController/LoginViewController.cs">
+    <Files>
+      <File FileName="Accessors/WorkshopList.cs" Line="84" Column="68" />
+      <File FileName="Models/Lecturer.cs" Line="6" Column="18" />
+      <File FileName="Models/Campus.cs" Line="7" Column="18" />
+      <File FileName="Models/Programme.cs" Line="1" Column="1" />
+      <File FileName="Models/SessionBooking.cs" Line="6" Column="18" />
+      <File FileName="Accessors/SessionBookingList.cs" Line="5" Column="30" />
+      <File FileName="Accessors/LecturerList.cs" Line="19" Column="3" />
+      <File FileName="UIViewController/LoginViewController.cs" Line="73" Column="32" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

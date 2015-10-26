@@ -44,5 +44,12 @@ namespace HELPiOS
 			if (!response.IsSuccess)
 				throw new StudentNotRegistered(response.DisplayMessage);
 		}
+
+        public async Task update(Student student)
+        {
+            Response<Object> response = await db.put<Object>(apiUri + "update", null, student);
+            if (!response.IsSuccess)
+                throw new StudentNotUpdated(response.DisplayMessage);
+        }
 	}
 }

@@ -28,9 +28,6 @@ namespace HELPiOS
 		public async Task<string> fetchString(string path, string parameters, HttpContent formData, Action action)
 		{
 			string fullUri = BaseUri + '/' + path;
-			Console.WriteLine(@"msg request {0}", fullUri + parameters);
-			try
-			{
 				HttpResponseMessage response;
 				switch (action)
 				{
@@ -47,24 +44,15 @@ namespace HELPiOS
 					response = await client.GetAsync(fullUri + parameters);
 					break;
 				}
-				LoadingOverlay.Instance.hideLoading();
-
+				//hide loading 
+				LoadingOverlay.Instance.hideLoading ();
 				if (response.IsSuccessStatusCode)
 				{
-					
-					Console.WriteLine(@"msg reponse {0}", response.Content.ReadAsStringAsync());
 					return await response.Content.ReadAsStringAsync();
 				}
 				else
 				{
-					throw new Exception(await response.Content.ReadAsStringAsync());
-				}
-			}
-			catch (Exception e)
-			{
-				LoadingOverlay.Instance.hideLoading();
-				Console.WriteLine(@"ERROR {0}", e.Message);
-				throw e;
+                throw new WebserviceFailureException(await response.Content.ReadAsStringAsync());
 			}
 		}
 

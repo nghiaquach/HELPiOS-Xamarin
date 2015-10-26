@@ -11,7 +11,6 @@ namespace HELPiOS
 {
 	public partial class MyBookingViewController : UIViewController
 	{
-		public static HelpItemManager HelpManager { get; private set; }
 
 		public MyBookingViewController (IntPtr handle) : base (handle)
 		{
@@ -52,10 +51,9 @@ namespace HELPiOS
 
 			WorkshopBookingList workshopBookingList = new WorkshopBookingList ();
 
-			Student std = new Student ();
-			std.studentID = "11875360";
+			Student student = AppParam.Instance.student;
 
-			List<WorkshopBooking> wkBookingList = await workshopBookingList.getUpcomingByStudent (std);
+			List<WorkshopBooking> wkBookingList = await workshopBookingList.getUpcomingByStudent (student);
 
 			myBookingTableView.Source = new MyBookingTableSource (this,wkBookingList);
 			myBookingTableView.ReloadData ();

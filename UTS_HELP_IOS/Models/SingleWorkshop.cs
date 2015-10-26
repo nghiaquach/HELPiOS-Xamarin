@@ -2,7 +2,7 @@
 
 namespace HELPiOS
 {
-	class SingleWorkshop : AbstractWorkshop
+    public class SingleWorkshop : AbstractWorkshop
 	{
 		public string campus { get; set; }
 		public DateTime StartDate { get; set; }

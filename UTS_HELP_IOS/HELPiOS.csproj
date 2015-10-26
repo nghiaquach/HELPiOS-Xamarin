@@ -139,13 +139,8 @@
       <DependentUpon>MyBookingViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="UIViewController\TableViewController\MyBookingTableSource.cs" />
-    <Compile Include="Data\HelpItemManager.cs" />
-    <Compile Include="Data\IRestService.cs" />
-    <Compile Include="Data\RestService.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Models\WorkshopBooking.cs" />
-    <Compile Include="Models\Login.cs" />
-    <Compile Include="Models\LoginReponse.cs" />
     <Compile Include="UIViewController\LoadingOverlay.cs" />
     <Compile Include="UIViewController\MyBookingDetailViewController.cs" />
     <Compile Include="UIViewController\MyBookingDetailViewController.designer.cs">
@@ -167,6 +162,11 @@
     <Compile Include="Models\Campus.cs" />
     <Compile Include="UIViewController\AppParam.cs" />
     <Compile Include="UIViewController\TableViewController\HistoryTableSource.cs" />
+    <Compile Include="Accessors\LecturerList.cs" />
+    <Compile Include="Accessors\SessionBookingList.cs" />
+    <Compile Include="Models\Lecturer.cs" />
+    <Compile Include="Models\SessionBooking.cs" />
+    <Compile Include="Models\WorkshopSet.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

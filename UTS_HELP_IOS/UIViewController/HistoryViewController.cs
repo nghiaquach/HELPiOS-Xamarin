@@ -23,10 +23,9 @@ namespace HELPiOS
 
 			WorkshopBookingList workshopBookingList = new WorkshopBookingList ();
 
-			Student std = new Student ();
-			std.studentID = "11875360";
+			Student student = AppParam.Instance.student;
 
-			List<WorkshopBooking> wkBookingList = await workshopBookingList.getPastByStudent (std);
+			List<WorkshopBooking> wkBookingList = await workshopBookingList.getPastByStudent (student);
 
 			historyBookingTable.Source = new MyBookingTableSource (this,wkBookingList);
 			historyBookingTable.ReloadData ();

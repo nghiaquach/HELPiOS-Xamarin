@@ -30,6 +30,8 @@ namespace HELPiOS
 
 		private string parseParameters(Object parameters)
 		{
+            if (parameters == null)
+                return String.Empty;
 			string serialisedParameters = JsonConvert.SerializeObject(parameters);
 			Dictionary<string, string> parsedParameters = JsonConvert.DeserializeObject<Dictionary<string, string>>(serialisedParameters);
             return '?' + String.Join("&", parsedParameters.Select(x => x.Key + "=" + x.Value));
@@ -38,7 +40,7 @@ namespace HELPiOS
 		private HttpContent parseFormData(Object formData)
 		{
 			string serialisedFormData = JsonConvert.SerializeObject(formData);
-			return new StringContent(serialisedFormData);
+            return new StringContent(serialisedFormData, Encoding.UTF8, "application/json");
 		}
 
 		public async Task<Response<T>> get<T>(string path, Object parameters)
