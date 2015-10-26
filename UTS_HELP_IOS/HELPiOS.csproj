@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{F15AE826-9A14-4697-A6EC-A8C072A34CDA}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>HELPiOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>UTS_HELP_IOS</AssemblyName>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>i386</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchProfiling>true</MtouchProfiling>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchI18n>
+    </MtouchI18n>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>i386</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+    <MtouchLink>None</MtouchLink>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchProfiling>true</MtouchProfiling>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <IpaPackageName>
+    </IpaPackageName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="System.Net" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.Services" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
+    <InterfaceDefinition Include="cancelBooking.xib" />
+    <InterfaceDefinition Include="login.xib" />
+    <InterfaceDefinition Include="makeBooking.xib" />
+    <InterfaceDefinition Include="myBookings.xib" />
+    <InterfaceDefinition Include="newBooking.xib" />
+    <InterfaceDefinition Include="register.xib" />
+    <InterfaceDefinition Include="setReminder.xib" />
+    <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="history.xib" />
+    <InterfaceDefinition Include="recordAttendance.xib" />
+    <InterfaceDefinition Include="FAQ.xib" />
+    <InterfaceDefinition Include="RegisterVC.xib" />
+    <InterfaceDefinition Include="LoginVC.xib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <None Include="Entitlements.plist" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="Accessors\StudentList.cs" />
+    <Compile Include="WebClient\DataFacade.cs" />
+    <Compile Include="Accessors\WorkshopList.cs" />
+    <Compile Include="Exceptions\HelpsExceptions.cs" />
+    <Compile Include="Models\AbstractWorkshop.cs" />
+    <Compile Include="Models\Programme.cs" />
+    <Compile Include="Models\SingleWorkshop.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="WebClient\DataSourceInterface.cs" />
+    <Compile Include="WebClient\Response.cs" />
+    <Compile Include="WebClient\RestClient.cs" />
+    <Compile Include="WebClient\WorkshopCache.cs" />
+    <Compile Include="UIViewController\LoginViewController.cs" />
+    <Compile Include="UIViewController\LoginViewController.designer.cs">
+      <DependentUpon>LoginViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIViewController\HistoryViewController.cs" />
+    <Compile Include="UIViewController\HistoryViewController.designer.cs">
+      <DependentUpon>HistoryViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIViewController\FAQViewController.cs" />
+    <Compile Include="UIViewController\FAQViewController.designer.cs">
+      <DependentUpon>FAQViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIViewController\RegisterViewController.cs" />
+    <Compile Include="UIViewController\RegisterViewController.designer.cs">
+      <DependentUpon>RegisterViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyBookingViewController.cs" />
+    <Compile Include="MyBookingViewController.designer.cs">
+      <DependentUpon>MyBookingViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterVC.cs" />
+    <Compile Include="RegisterVC.designer.cs">
+      <DependentUpon>RegisterVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginVC.cs" />
+    <Compile Include="LoginVC.designer.cs">
+      <DependentUpon>LoginVC.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+    <Folder Include="Models\" />
+    <Folder Include="UIViewController\" />
+  </ItemGroup>
+</Project>
