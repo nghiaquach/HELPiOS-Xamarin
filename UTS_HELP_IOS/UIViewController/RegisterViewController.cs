@@ -56,12 +56,13 @@ namespace HELPiOS
 				navBar.TopItem.Title = "My Profile";
 
 				Student tmpStudent = AppParam.Instance.student;
-				degreeTextField.Text = "Ungraduate";
+				degreeTextField.Text = "International";
 				statusTextField.Text = "Permanent";
 				educationTextField.Text = "HSC";
 				PreferedName.Text = tmpStudent.preferred_name;
 				FirstLanguage.Text = tmpStudent.first_language;
-				CountryOrigin.Text = "Australia";
+
+
 
 				degreeTextField.UserInteractionEnabled = false;
 				statusTextField.UserInteractionEnabled = false;
@@ -69,6 +70,9 @@ namespace HELPiOS
 				PreferedName.UserInteractionEnabled = false;
 				FirstLanguage.UserInteractionEnabled = false;
 				CountryOrigin.UserInteractionEnabled = false;
+
+
+
 
 				SubmitButton.Hidden = true;
 
@@ -96,30 +100,50 @@ namespace HELPiOS
 
 				this.SubmitButton.TouchUpInside += (o, e) => {
 
-					Student std = new Student ();
+					StudentReg stdReg = new StudentReg ();
 
-					std.studentID = this.currentStudentID;
-					std.preferred_name = PreferedName.Text;
+					//				"StudentId" : "123456", // required
+					//				"DateOfBirth" : "1 January 1995",
+					//				"Gender" : "M", // optional
+					//				"Degree" : "UG", // required
+					//				"Status" : "International", // required
+					//				"FirstLanguage" : "English", // required
+					//				"CountryOrigin" : "Australia", // required
+					//				"Background" : "Degree", // optional
+					//				"DegreeDetails" : "1st", // optional
+					//				"AltContact" : "0405294958", // optional
+					//				"PreferredName" : "Tom", // optional
+
+					stdReg.StudentId = this.currentStudentID;
+					stdReg.PreferredName = PreferedName.Text;
 //				std.degree = degreeTextField.Text.Equals("Undergraduate")?Degree.UnderGrad:Degree.PostGrad;
-					std.degree = std.degree;
-					std.status = std.status;
+					stdReg.Degree = Degree.UnderGrad;
+					stdReg.Status = Status.Permanent;
+//					std.gender = "M";
 //				std.status = statusTextField.Text.Equals("International")?Status.International:Status.Permanent;
-					std.first_language = FirstLanguage.Text;
-					std.HSC = true;
-					std.creatorId = AppParam.CreatorId;
+					stdReg.FirstLanguage ="English";
+					stdReg.CountryOrigin = "Australia";
+					stdReg.HSC = true;
+					stdReg.CreatorId = AppParam.CreatorId;
 
-					doRegister (std);
+					doRegister (stdReg);
 
 				};
 			}
 		}
 
-		private async void doRegister(Student std){
+		private async void doRegister(StudentReg stdReg){
 			LoadingOverlay.Instance.showLoading(this);
 			StudentList stdList = new StudentList();
 			try{
-				await stdList.create(std);
-				this.showNext();
+				await stdList.create(stdReg);
+
+				LoadingOverlay.Instance.showLoading (this);
+				Student std = await stdList.getById (stdReg.StudentId);
+
+				if (std!=null) {
+					this.showNext();
+				}
 			}
 			catch(Exception ex){
 				AppParam.Instance.showAlertMessage("Register","Registration Fail!");
@@ -129,6 +153,7 @@ namespace HELPiOS
 		private void showNext(){
 			//this.NavigationController.PushViewController (pinkViewController, true);
 			AppDelegate.mainTabbarController = (UITabBarController)AppDelegate.Storyboard.InstantiateViewController ("MainTabbarController");
+
 			//AppDelegate.mainTabbarController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
 			this.PresentViewController(AppDelegate.mainTabbarController, true, null);
 		}

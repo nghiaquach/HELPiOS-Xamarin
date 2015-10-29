@@ -30,7 +30,7 @@ namespace HELPiOS
 			string fullUri = BaseUri + '/' + path;
 				HttpResponseMessage response;
 
-			Console.WriteLine ("request: " + fullUri + parameters + formData.ReadAsStringAsync());
+			Console.WriteLine ("request: " + fullUri + parameters + (await formData.ReadAsStringAsync()));
 
 				switch (action)
 				{

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace UTS_HELP_ANDROID.Resources.Models
+namespace HELPiOS
 {
     public class WorkshopSet
     {

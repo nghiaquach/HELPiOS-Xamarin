@@ -21,6 +21,8 @@ namespace HELPiOS
             formData.Add("password", password);
             Response<Object> response = await db.post<Object>(apiUri + "login", null, formData);
             return response.IsSuccess;
+
+
         }
 
 		public async Task<Student> getById(string studentId)
@@ -38,7 +40,7 @@ namespace HELPiOS
             */
 		}
 
-        public async Task create(Student student)
+		public async Task create(StudentReg student)
 		{
             Response<Object> response = await db.post<Object>(apiUri + "register", null, student);
 			if (!response.IsSuccess)

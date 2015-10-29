@@ -83,7 +83,7 @@ namespace HELPiOS
 
 				//myBookingDetailViewController
 				if (workshopBooking != null) {
-					AppParam.campustName = await this.getCampusRoom (workshopBooking.campusID);
+					AppParam.campusName = await this.getCampusRoom (workshopBooking.campusID);
 					myBookingDetailViewController.ModalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
 					myBookingDetailViewController.workshopBooking = workshopBooking;
 					myBookingViewController.PresentViewController (myBookingDetailViewController, true, null);

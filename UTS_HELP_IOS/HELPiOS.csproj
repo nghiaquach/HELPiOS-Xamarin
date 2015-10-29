@@ -86,13 +86,6 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
-    <InterfaceDefinition Include="cancelBooking.xib" />
-    <InterfaceDefinition Include="login.xib" />
-    <InterfaceDefinition Include="makeBooking.xib" />
-    <InterfaceDefinition Include="myBookings.xib" />
-    <InterfaceDefinition Include="newBooking.xib" />
-    <InterfaceDefinition Include="register.xib" />
-    <InterfaceDefinition Include="setReminder.xib" />
     <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="UIViewController\MyBookingViewController.xib" />
     <InterfaceDefinition Include="UIViewController\DateViewController.xib" />
@@ -173,6 +166,12 @@
     <Compile Include="UIViewController\NewBookingDetailViewController.designer.cs">
       <DependentUpon>NewBookingDetailViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\SessionBookingSearch.cs" />
+    <Compile Include="Models\StudentReg.cs" />
+    <Compile Include="Models\UpdateSessionBooking.cs" />
+    <Compile Include="Models\UpdateWorkshopBooking.cs" />
+    <Compile Include="Models\WorkshopBookingSearch.cs" />
+    <Compile Include="Models\WorkshopSearch.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

@@ -57,7 +57,7 @@ namespace HELPiOS
 				cell.UpdateCell (@"Title", workshopBooking.topic);
 				break;
 			case 1:
-				cell.UpdateCell (@"Room", AppParam.campustName);
+				cell.UpdateCell (@"Room", AppParam.campusName);
 				break;
 			case 2:
 				cell.UpdateCell (@"Date Time", workshopBooking.starting+"");

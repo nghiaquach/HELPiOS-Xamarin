@@ -45,9 +45,16 @@ namespace HELPiOS
 
 		public override void ViewDidAppear (bool animate){
 			AppParam.Instance.student = null;
+			//for testing
+//			StudentID.Text = "11875360";
+//			Password.Text = "1234567";
 
 			StudentID.Text = "11875360";
 			Password.Text = "1234567";
+
+
+//			StudentID.Text = "";
+//			Password.Text = "";
 		}
 
 		private bool validation(string studentId, string password){
@@ -70,8 +77,6 @@ namespace HELPiOS
 			LoadingOverlay.Instance.showLoading (this);
 
 			StudentList studentList = new StudentList ();
-
-
 			bool loginStatus = await studentList.login(studentID,password);
 
 			if (loginStatus) {
@@ -87,6 +92,7 @@ namespace HELPiOS
 					//show register screen
 					this.doRegistration(studentID);
 				}
+				this.showNext();
 			} else {
 				AppParam.Instance.showAlertMessage ("Login Status","Student ID and Password are not match!");
 			}
@@ -95,7 +101,6 @@ namespace HELPiOS
 		private void showNext(){
 			//this.NavigationController.PushViewController (pinkViewController, true);
 			AppDelegate.mainTabbarController = (UITabBarController)AppDelegate.Storyboard.InstantiateViewController ("MainTabbarController");
-
 			//AppDelegate.mainTabbarController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
 			this.PresentViewController(AppDelegate.mainTabbarController, true, null);
 		}
