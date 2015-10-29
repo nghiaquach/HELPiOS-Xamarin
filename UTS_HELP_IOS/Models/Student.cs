@@ -24,6 +24,7 @@ namespace HELPiOS
         public Status status { get; set; }
 		[JsonProperty(Required = Required.Always)]
         public string first_language { get; set; }
+		public string country_origin { get; set; }
         public string background { get; set; }
 		[JsonConverter(typeof(DegreeDetailsConverter))]
         public DegreeDetails? degree_details { get; set; }

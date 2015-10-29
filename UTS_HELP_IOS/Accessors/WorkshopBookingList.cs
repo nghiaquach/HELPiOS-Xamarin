@@ -17,7 +17,7 @@ namespace HELPiOS
             db = new DataFacade();
         }
 
-        private async Task create(AbstractWorkshop workshop, Student student, string apiUri) {
+        private async Task create(SingleWorkshop workshop, Student student, string apiUri) {
             Dictionary<string, Object> parameters = new Dictionary<string, Object>();
             parameters.Add("workshopId", workshop.WorkshopId);
             parameters.Add("studentId", student.studentID);
@@ -27,17 +27,17 @@ namespace HELPiOS
                 throw new StudentNotBooked(response.DisplayMessage);
         }
 
-        public async Task createBooking(AbstractWorkshop workshop, Student student)
+        public async Task createBooking(SingleWorkshop workshop, Student student)
         {
             await create(workshop, student, apiBookingUri);
         }
 
-        public async Task createWaiting(AbstractWorkshop workshop, Student student)
+        public async Task createWaiting(SingleWorkshop workshop, Student student)
         {
             await create(workshop, student, apiWaitingUri);
         }
 
-        public async Task cancel(AbstractWorkshop workshop, Student student, string apiUri)
+        public async Task cancel(SingleWorkshop workshop, Student student, string apiUri)
         {
             Dictionary<string, Object> parameters = new Dictionary<string, Object>();
             parameters.Add("workshopId", workshop.WorkshopId);
@@ -48,12 +48,12 @@ namespace HELPiOS
                 throw new BookingNotCancelled(response.DisplayMessage);
         }
 
-        public async Task cancelBooking(AbstractWorkshop workshop, Student student)
+        public async Task cancelBooking(SingleWorkshop workshop, Student student)
         {
             await cancel(workshop, student, apiBookingUri);
         }
 
-        public async Task cancelWaiting(AbstractWorkshop workshop, Student student)
+        public async Task cancelWaiting(SingleWorkshop workshop, Student student)
         {
             await cancel(workshop, student, apiWaitingUri);
         }

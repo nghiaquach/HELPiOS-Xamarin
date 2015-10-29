@@ -46,9 +46,6 @@ namespace HELPiOS
 		public override void ViewDidAppear (bool animate){
 			AppParam.Instance.student = null;
 			//for testing
-//			StudentID.Text = "11875360";
-//			Password.Text = "1234567";
-
 			StudentID.Text = "11875360";
 			Password.Text = "1234567";
 
@@ -69,9 +66,6 @@ namespace HELPiOS
 		}
 
 		private async void doLogin(string studentID, string password){
-//for testing
-//			this.doRegistration(studentID);
-
 
 			//loading 
 			LoadingOverlay.Instance.showLoading (this);
@@ -97,7 +91,7 @@ namespace HELPiOS
 				AppParam.Instance.showAlertMessage ("Login Status","Student ID and Password are not match!");
 			}
 		}
-
+		// show booking tabbar controller
 		private void showNext(){
 			//this.NavigationController.PushViewController (pinkViewController, true);
 			AppDelegate.mainTabbarController = (UITabBarController)AppDelegate.Storyboard.InstantiateViewController ("MainTabbarController");

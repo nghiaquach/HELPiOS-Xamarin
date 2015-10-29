@@ -14,7 +14,7 @@ namespace HELPiOS
 			db = new DataFacade();
 		}
 
-        public async Task<T> getById<T>(int id) where T : AbstractWorkshop
+        public async Task<T> getById<T>(int id) where T : SingleWorkshop
         {
             Dictionary<string, Object> parameters = new Dictionary<string, Object>();
             parameters.Add("active", true);
@@ -34,7 +34,7 @@ namespace HELPiOS
             }
 		}
 
-        private async Task<List<AbstractWorkshop>> search(Dictionary<string, Object> parameters)
+        private async Task<List<SingleWorkshop>> search(Dictionary<string, Object> parameters)
         {
             if (!parameters.ContainsKey("startingDtBegin"))
             {
@@ -42,7 +42,7 @@ namespace HELPiOS
                 parameters.Add("startingDtEnd", DateTime.Now);
             }
             parameters.Add("active", true);
-            Response<AbstractWorkshop> response = await db.get<AbstractWorkshop>(apiUri + "/search", parameters, new AbstractWorkshopConverter());
+            Response<SingleWorkshop> response = await db.get<SingleWorkshop>(apiUri + "/search", parameters, null);
             if (response.IsSuccess && response.Results != null)
             {
                 return response.Results;
@@ -53,20 +53,20 @@ namespace HELPiOS
             }
         }
 
-        public async Task<List<AbstractWorkshop>> search()
+        public async Task<List<SingleWorkshop>> search()
         {
             Dictionary<string, Object> parameters = new Dictionary<string, Object>();
             return await search(parameters);
         }
 
-        public async Task<List<AbstractWorkshop>> searchByTopic(string topic)
+        public async Task<List<SingleWorkshop>> searchByTopic(string topic)
         {
             Dictionary<string, Object> parameters = new Dictionary<string, Object>();
             parameters.Add("topic", topic);
             return await search(parameters);
         }
 
-        public async Task<List<AbstractWorkshop>> searchByStartDate(DateTime date)
+        public async Task<List<SingleWorkshop>> searchByStartDate(DateTime date)
         {
             Dictionary<string, Object> parameters = new Dictionary<string, Object>();
             parameters.Add("startingDtBegin", date);
@@ -74,14 +74,14 @@ namespace HELPiOS
             return await search(parameters);
         }
 
-        public async Task<List<AbstractWorkshop>> searchByLocation(Campus campus)
+        public async Task<List<SingleWorkshop>> searchByLocation(Campus campus)
         {
             Dictionary<string, Object> parameters = new Dictionary<string, Object>();
             parameters.Add("campusID", campus.id);
             return await search(parameters);
         }
 
-        public async Task<List<AbstractWorkshop>> searchByLecturer(Lecturer lecturer)
+        public async Task<List<SingleWorkshop>> searchByLecturer(Lecturer lecturer)
         {
             Dictionary<string, Object> parameters = new Dictionary<string, Object>();
             parameters.Add("lecturerID", lecturer.id);

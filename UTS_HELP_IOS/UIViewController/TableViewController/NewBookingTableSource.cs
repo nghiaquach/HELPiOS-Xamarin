@@ -9,16 +9,16 @@ namespace HELPiOS
 	public class NewBookingTableSource : UITableViewSource
 	{
 
-		List<WorkshopBooking> workshopBookingList = new List<WorkshopBooking> ();
-		UIViewController myBookingViewController;
-		MyBookingDetailViewController myBookingDetailViewController;
+		List<SingleWorkshop> singleWorkhopList = new List<SingleWorkshop> ();
+		UIViewController newBookingViewController;
+		NewBookingDetailViewController newBookingDetailViewController;
 
 		NSString cellIdentifier = new NSString ("TableCell");
 
-		public NewBookingTableSource (UIViewController myBookingViewController, List<WorkshopBooking> workshopBookingList)
+		public NewBookingTableSource (UIViewController newBookingViewController, List<SingleWorkshop> singleWorkhopList)
 		{
-			this.workshopBookingList = workshopBookingList;
-			this.myBookingViewController = myBookingViewController;
+			this.singleWorkhopList = singleWorkhopList;
+			this.newBookingViewController = newBookingViewController;
 		}
 
 		public override nint RowsInSection (UITableView tableview, nint section)
@@ -54,17 +54,20 @@ namespace HELPiOS
 			}
 
 			if (indexPath.Section == 0) {
-				if (workshopBookingList.Count == 0) {
+				if (singleWorkhopList.Count == 0) {
 					dCell.TextLabel.Text = "No Records";
 					return dCell;
 				} else {
-					cell.UpdateCell (workshopBookingList [indexPath.Row].topic + ""
-						, workshopBookingList [indexPath.Row].starting + "");
+					if (singleWorkhopList [indexPath.Row] != null) {
+						cell.UpdateCell (singleWorkhopList [indexPath.Row].topic + ""
+						, singleWorkhopList [indexPath.Row].StartDate + "");
+					}
 					
 				}
-
-				cell.UpdateCell (workshopBookingList [indexPath.Row].topic + ""
-					, workshopBookingList [indexPath.Row].starting + "");
+				if (singleWorkhopList [indexPath.Row] != null) {
+					cell.UpdateCell (singleWorkhopList [indexPath.Row].topic + ""
+					, singleWorkhopList [indexPath.Row].EndDate + "");
+				}
 
 
 			}
@@ -76,13 +79,14 @@ namespace HELPiOS
 		/// </summary>
 		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 		{
-			WorkshopBooking workshopBooking = workshopBookingList[indexPath.Row];
+			SingleWorkshop singleWorkshop = singleWorkhopList[indexPath.Row];
 
-			//myBookingDetailViewController
-			if (workshopBooking != null) {
-				myBookingDetailViewController.ModalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
-				myBookingDetailViewController.workshopBooking = workshopBooking;
-				myBookingViewController.PresentViewController (myBookingDetailViewController, true, null);
+			newBookingDetailViewController = (NewBookingDetailViewController)AppDelegate.Storyboard.InstantiateViewController ("NewBookingDetailViewController");
+			//New BookingDetailViewController
+			if (singleWorkshop != null) {
+				newBookingDetailViewController.ModalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
+				newBookingDetailViewController.singleWorkshop = singleWorkshop;
+				newBookingViewController.PresentViewController (newBookingDetailViewController, true, null);
 			}
 			//deselect row
 			tableView.DeselectRow (indexPath, true);

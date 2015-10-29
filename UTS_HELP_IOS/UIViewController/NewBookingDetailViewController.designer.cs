@@ -15,7 +15,7 @@ namespace HELPiOS
 	partial class NewBookingDetailViewController
 	{
 		[Outlet ("myBookingDetailTable")]
-		UIKit.UITableView myBookingDetailTable { get; set; }
+		UIKit.UITableView newBookingDetailTable { get; set; }
 
 		[Outlet ("descriptionTextView")]
 		UIKit.UITextView descriptionTextView { get; set; }

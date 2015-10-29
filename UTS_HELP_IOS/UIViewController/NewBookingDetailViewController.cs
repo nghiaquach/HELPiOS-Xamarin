@@ -11,7 +11,7 @@ namespace HELPiOS
 {
 	public partial class NewBookingDetailViewController : UIViewController
 	{
-		public WorkshopBooking workshopBooking { get; set;}
+		public SingleWorkshop singleWorkshop { get; set;}
 		
 		public NewBookingDetailViewController (IntPtr handle) : base (handle)
 		{
@@ -48,16 +48,17 @@ namespace HELPiOS
 
 		private void showBookingDetail ()
 		{			
-			descriptionTextView.Text = workshopBooking.description==null?"No description":workshopBooking.description;
-			myBookingDetailTable.Source = new MyBookingDetailTableSource (workshopBooking);
-			myBookingDetailTable.ReloadData ();
+			descriptionTextView.Text = singleWorkshop.description==null?"No description":singleWorkshop.description;
+			newBookingDetailTable.Source = new NewBookingDetailTableSource (singleWorkshop);
+			newBookingDetailTable.ReloadData ();
 		}
 
 		private async void bookWorkshop(){
 			LoadingOverlay.Instance.showLoading(this);
 			WorkshopBookingList workshopBookingList = new WorkshopBookingList();
 			try{
-//			workshopBookingList.createBooking(WebKit,student);
+				workshopBookingList.createBooking(singleWorkshop,AppParam.Instance.student);
+				this.DismissViewControllerAsync(true);
 			}
 			catch(Exception ex){
 				AppParam.Instance.showAlertMessage ("Workshop Booking", "Booking Fail!");

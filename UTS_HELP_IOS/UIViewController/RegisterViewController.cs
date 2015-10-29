@@ -56,13 +56,12 @@ namespace HELPiOS
 				navBar.TopItem.Title = "My Profile";
 
 				Student tmpStudent = AppParam.Instance.student;
-				degreeTextField.Text = "International";
-				statusTextField.Text = "Permanent";
+				degreeTextField.Text = tmpStudent.degree == Degree.PostGrad ? "Postgraduate" : "Undergraduate";
+				statusTextField.Text = tmpStudent.status == Status.International ? "International" : "Permanent";
 				educationTextField.Text = "HSC";
+				CountryOrigin.Text = tmpStudent.country_origin;
 				PreferedName.Text = tmpStudent.preferred_name;
 				FirstLanguage.Text = tmpStudent.first_language;
-
-
 
 				degreeTextField.UserInteractionEnabled = false;
 				statusTextField.UserInteractionEnabled = false;
@@ -70,8 +69,6 @@ namespace HELPiOS
 				PreferedName.UserInteractionEnabled = false;
 				FirstLanguage.UserInteractionEnabled = false;
 				CountryOrigin.UserInteractionEnabled = false;
-
-
 
 
 				SubmitButton.Hidden = true;
@@ -100,36 +97,31 @@ namespace HELPiOS
 
 				this.SubmitButton.TouchUpInside += (o, e) => {
 
-					StudentReg stdReg = new StudentReg ();
+					if(validation()){
+						StudentReg stdReg = new StudentReg ();
+						stdReg.StudentId = this.currentStudentID;
+						stdReg.PreferredName = PreferedName.Text;
+						stdReg.Degree = degreeTextField.Text.Equals("Undergraduate")?Degree.UnderGrad:Degree.PostGrad;
+						stdReg.Status = statusTextField.Text.Equals("International")?Status.International:Status.Permanent;
+						stdReg.FirstLanguage ="English";
+						stdReg.CountryOrigin = "Australia";
+						stdReg.HSC = true;
+						stdReg.CreatorId = AppParam.CreatorId;
 
-					//				"StudentId" : "123456", // required
-					//				"DateOfBirth" : "1 January 1995",
-					//				"Gender" : "M", // optional
-					//				"Degree" : "UG", // required
-					//				"Status" : "International", // required
-					//				"FirstLanguage" : "English", // required
-					//				"CountryOrigin" : "Australia", // required
-					//				"Background" : "Degree", // optional
-					//				"DegreeDetails" : "1st", // optional
-					//				"AltContact" : "0405294958", // optional
-					//				"PreferredName" : "Tom", // optional
-
-					stdReg.StudentId = this.currentStudentID;
-					stdReg.PreferredName = PreferedName.Text;
-//				std.degree = degreeTextField.Text.Equals("Undergraduate")?Degree.UnderGrad:Degree.PostGrad;
-					stdReg.Degree = Degree.UnderGrad;
-					stdReg.Status = Status.Permanent;
-//					std.gender = "M";
-//				std.status = statusTextField.Text.Equals("International")?Status.International:Status.Permanent;
-					stdReg.FirstLanguage ="English";
-					stdReg.CountryOrigin = "Australia";
-					stdReg.HSC = true;
-					stdReg.CreatorId = AppParam.CreatorId;
-
-					doRegister (stdReg);
+						doRegister (stdReg);
+					}
 
 				};
 			}
+		}
+
+		private bool validation(){
+			if(degreeTextField.Text.Equals("")|| StatusText.Text.Equals("")
+				|| FirstLanguage.Text.Equals("")|| CountryOrigin.Equals("")){
+				AppParam.Instance.showAlertMessage ("Validation","Please fill in required fields");
+				return false;
+			}
+			return true;
 		}
 
 		private async void doRegister(StudentReg stdReg){
@@ -137,16 +129,11 @@ namespace HELPiOS
 			StudentList stdList = new StudentList();
 			try{
 				await stdList.create(stdReg);
-
-				LoadingOverlay.Instance.showLoading (this);
-				Student std = await stdList.getById (stdReg.StudentId);
-
-				if (std!=null) {
-					this.showNext();
-				}
+				await this.DismissViewControllerAsync(true);
 			}
 			catch(Exception ex){
 				AppParam.Instance.showAlertMessage("Register","Registration Fail!");
+				Console.WriteLine (ex);
 			}
 		}
 

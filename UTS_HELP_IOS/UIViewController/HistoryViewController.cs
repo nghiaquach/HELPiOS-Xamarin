@@ -35,7 +35,7 @@ namespace HELPiOS
 
 			List<WorkshopBooking> wkBookingList = await workshopBookingList.getPastByStudent (student);
 
-			historyBookingTable.Source = new MyBookingTableSource (this,wkBookingList);
+			historyBookingTable.Source = new HistoryTableSource (this,wkBookingList);
 			historyBookingTable.ReloadData ();
 		}
 

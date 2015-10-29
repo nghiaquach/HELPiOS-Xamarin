@@ -7,12 +7,12 @@ namespace HELPiOS
 {
 	public class NewBookingDetailTableSource : UITableViewSource {
 
-		WorkshopBooking workshopBooking;
+		SingleWorkshop singleWorkshop;
 		NSString cellIdentifier = new NSString("TableCell");
 
-		public NewBookingDetailTableSource (WorkshopBooking workshopBooking)
+		public NewBookingDetailTableSource (SingleWorkshop singleWorkshop)
 		{
-			this.workshopBooking = workshopBooking;
+			this.singleWorkshop = singleWorkshop;
 		}
 
 		public override nint RowsInSection (UITableView tableview, nint section)
@@ -41,19 +41,19 @@ namespace HELPiOS
 			switch (indexPath.Row)
 			{
 			case 0:
-				cell.UpdateCell (@"Title", workshopBooking.topic);
+				cell.UpdateCell (@"Title", singleWorkshop.topic);
 				break;
 			case 1:
-				cell.UpdateCell (@"Room", workshopBooking.campusID+"");
+				cell.UpdateCell (@"Room", singleWorkshop.campus+"");
 				break;
 			case 2:
-				cell.UpdateCell (@"Date Time", workshopBooking.starting+"");
+				cell.UpdateCell (@"Date Time", singleWorkshop.StartDate+"");
 				break;
 			case 3:
-				cell.UpdateCell (@"Target Group", workshopBooking.targetingGroup==null?"None":workshopBooking.targetingGroup);
+				cell.UpdateCell (@"Target Group", singleWorkshop.targetingGroup==null?"None":singleWorkshop.targetingGroup);
 				break;
 			case 4:
-				cell.UpdateCell (@"Place available", workshopBooking.maximum+"");
+				cell.UpdateCell (@"Place available", singleWorkshop.maximum+"");
 				break;
 			}
 

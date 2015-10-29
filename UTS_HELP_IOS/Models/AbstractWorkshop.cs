@@ -12,32 +12,36 @@ namespace HELPiOS
 		public string targetingGroup { get; set; }
 		public int maximum { get; set; }
 		public int? WorkShopSetID { get; set; }
+		public int? CampusId { get; set; }
 		public int? cutoff { get; set; }
 		public string type { get; set; }
 		public int BookingCount { get; set; }
         public bool? archived { get; set; }
+
 	}
 
 	public class AbstractWorkshopConverter : JsonConverter
 	{
 		public override bool CanConvert(Type objectType)
 		{
-			return (objectType == typeof(AbstractWorkshop));
+			return (objectType == typeof(SingleWorkshop));
 		}
 
 		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
 		{
-			JObject jo = JObject.Load(reader);
-			string workshopType = jo["type"].Value<string>();
-			switch (workshopType)
-			{
-			case "single":
-				return jo.ToObject<SingleWorkshop>(serializer);
-			case "multiple":
-				return jo.ToObject<Programme>(serializer);
-			default:
-				throw new UnknownWorkshopType("Unknown workshop type: " + workshopType);
-			}
+//			JObject jo = JObject.Load(reader);
+//			string workshopType = jo["type"].Value<string>();
+//			if (workshopType != null) {
+//				switch (workshopType) {
+//				case "single":
+//					return jo.ToObject<SingleWorkshop> (serializer);
+//				case "multiple":
+//					return jo.ToObject<Programme> (serializer);
+//				default:
+//					throw new UnknownWorkshopType ("Unknown workshop type: " + workshopType);
+//				}
+//			}
+			return null;
 		}
 
 		public override bool CanWrite

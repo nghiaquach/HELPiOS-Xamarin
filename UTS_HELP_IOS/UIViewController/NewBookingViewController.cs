@@ -96,7 +96,7 @@ namespace HELPiOS
 					this.searchByTopic();
 				}
 				else if(selectedItem == SearchSelection.Date){
-					this.searchByTopic();
+					this.searchByDate();
 				}
 				else if(selectedItem == SearchSelection.Location){
 					this.searchByLocation();
@@ -123,7 +123,7 @@ namespace HELPiOS
 			LoadingOverlay.Instance.showLoading(this);
 			if (!searchBar.Text.Equals("")) {
 				WorkshopList workshopList = new WorkshopList();
-				List<AbstractWorkshop> ab =  await workshopList.searchByTopic(searchBar.Text);
+				List<SingleWorkshop> ab =  await workshopList.searchByTopic(searchBar.Text);
 			
 				Console.WriteLine("Result "+ ab.Count);
 			}
@@ -134,11 +134,15 @@ namespace HELPiOS
 			LoadingOverlay.Instance.showLoading(this);
 			if (!searchBar.Text.Equals("")) {
 				WorkshopList workshopList = new WorkshopList();
-				List<AbstractWorkshop> ab =  await workshopList.searchByStartDate(this.toDateFromNSDate(dateVC.selectedDate));
+
+				List<SingleWorkshop> ab =  await workshopList.searchByStartDate(this.toDateFromNSDate(dateVC.selectedDate));
+				this.showResultInTable (ab);
 
 				Console.WriteLine("Result: "+ ab.Count);
 			}
 		}
+
+
 
 		//search by date
 		private async void searchByLocation(){
@@ -146,7 +150,7 @@ namespace HELPiOS
 			if (!searchBar.Text.Equals("")) {
 				WorkshopList workshopList = new WorkshopList();
 				Campus cmp = new Campus ();
-				List<AbstractWorkshop> ab =  await workshopList.searchByLocation(cmp);
+				List<SingleWorkshop> ab =  await workshopList.searchByLocation(cmp);
 
 				Console.WriteLine("Result: "+ ab.Count);
 			}
@@ -160,7 +164,7 @@ namespace HELPiOS
 
 				Lecturer lecturer = new Lecturer ();
 
-				List<AbstractWorkshop> ab =  await workshopList.searchByLecturer(lecturer);
+				List<SingleWorkshop> ab =  await workshopList.searchByLecturer(lecturer);
 
 				Console.WriteLine("Result: "+ ab.Count);
 			}
@@ -173,6 +177,13 @@ namespace HELPiOS
 			// We loose granularity below millisecond range but that is probably ok
 			return nsRef.AddSeconds(nsDate.SecondsSinceReferenceDate);
 		}
+
+		private void showResultInTable(List<SingleWorkshop> abstractWorkshopList){
+			resultTableView.Source = new NewBookingTableSource (this,abstractWorkshopList);
+			resultTableView.ReloadData ();
+		}
 	}
+
+
 }
 
