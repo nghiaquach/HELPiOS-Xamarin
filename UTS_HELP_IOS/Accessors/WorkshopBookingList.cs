@@ -37,10 +37,10 @@ namespace HELPiOS
             await create(workshop, student, apiWaitingUri);
         }
 
-        public async Task cancel(SingleWorkshop workshop, Student student, string apiUri)
+		public async Task cancel(WorkshopBooking workshop, Student student, string apiUri)
         {
             Dictionary<string, Object> parameters = new Dictionary<string, Object>();
-            parameters.Add("workshopId", workshop.WorkshopId);
+			parameters.Add("workshopId", workshop.workshopID);
             parameters.Add("studentId", student.studentID);
             parameters.Add("userId", student.studentID);
             Response<Object> response = await db.post<Object>(apiUri + "cancel", parameters, null);
@@ -48,12 +48,12 @@ namespace HELPiOS
                 throw new BookingNotCancelled(response.DisplayMessage);
         }
 
-        public async Task cancelBooking(SingleWorkshop workshop, Student student)
+		public async Task cancelBooking(WorkshopBooking workshop, Student student)
         {
             await cancel(workshop, student, apiBookingUri);
         }
 
-        public async Task cancelWaiting(SingleWorkshop workshop, Student student)
+		public async Task cancelWaiting(WorkshopBooking workshop, Student student)
         {
             await cancel(workshop, student, apiWaitingUri);
         }

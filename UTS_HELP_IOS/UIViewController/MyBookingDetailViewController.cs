@@ -63,7 +63,8 @@ namespace HELPiOS
 		private async void cancelWorkshopBooking(){
 			WorkshopBookingList workshopBookingList = new WorkshopBookingList();
 			try{
-//				await workshopBookingList.cancelBooking(workshopBooking,AppParam.Instance.student);
+				await workshopBookingList.cancelBooking(workshopBooking,AppParam.Instance.student);
+				this.DismissViewControllerAsync(true);
 			}
 			catch(Exception ex){
 				AppParam.Instance.showAlertMessage ("Workshop Booking", "Cancel workshop booking Fail!");
@@ -71,17 +72,17 @@ namespace HELPiOS
 
 		}
 
-		private async void cancelWorkshopWaiting(){
-			WorkshopBookingList workshopBookingList = new WorkshopBookingList();
-			try{
-				
+//		private async void cancelWorkshopWaiting(){
+//			WorkshopBookingList workshopBookingList = new WorkshopBookingList();
+//			try{
+//				
 //				workshopBookingList.cancelWaiting(WebKit,student);
-			}
-			catch(Exception ex){
-				AppParam.Instance.showAlertMessage ("Workshop Waiting", "Cancel workshop waiting Fail!");
-			}
-
-		}
+//			}
+//			catch(Exception ex){
+//				AppParam.Instance.showAlertMessage ("Workshop Waiting", "Cancel workshop waiting Fail!");
+//			}
+//
+//		}
 	}
 }
 
