@@ -57,8 +57,8 @@ namespace HELPiOS
 			LoadingOverlay.Instance.showLoading(this);
 			WorkshopBookingList workshopBookingList = new WorkshopBookingList();
 			try{
-				workshopBookingList.createBooking(singleWorkshop,AppParam.Instance.student);
-				this.DismissViewControllerAsync(true);
+				await workshopBookingList.createBooking(singleWorkshop,AppParam.Instance.student);
+				await this.DismissViewControllerAsync(true);
 			}
 			catch(Exception ex){
 				AppParam.Instance.showAlertMessage ("Workshop Booking", "Booking Fail!");

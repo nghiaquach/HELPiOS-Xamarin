@@ -23,11 +23,12 @@ namespace HELPiOS
 		[Outlet ("cancelButton")]
 		UIKit.UIButton cancelButton { get; set; }
 
+		[Outlet ("SetReminderButton")]
+		UIKit.UIBarButtonItem setReminderButton { get; set; }
+
 		[Outlet ("backButton")]
 		UIKit.UIBarButtonItem backButton { get; set; }
 
-		void ReleaseDesignerOutlets ()
-		{
-		}
+	
 	}
 }

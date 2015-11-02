@@ -10,36 +10,44 @@ namespace HELPiOS
 	public class MyBookingTableSource : UITableViewSource {
 
 		List<WorkshopBooking> workshopBookingList = new List<WorkshopBooking>();
-
-		//		List<WorkshopBooking> bookingWorkShopList = new List<WorkshopBooking>();
-		//		List<WorkshopBooking> bookedWorkhopList = new List<WorkshopBooking>();
+		List<SessionBooking> sessionBookingList = new List<SessionBooking>();
 
 		MyBookingDetailViewController myBookingDetailViewController;
 		UIViewController myBookingViewController;
 
 		NSString cellIdentifier = new NSString("TableCell");
 
-		public MyBookingTableSource (UIViewController myBookingViewController,List<WorkshopBooking> workshopBookingList)
+		public MyBookingTableSource (UIViewController myBookingViewController,
+			List<WorkshopBooking> workshopBookingList, List<SessionBooking> sessionBookingList)
 		{
 			this.workshopBookingList = workshopBookingList;
 			this.myBookingViewController = myBookingViewController;
+			this.sessionBookingList = sessionBookingList;
 		}
 			
 
 		public override nint RowsInSection (UITableView tableview, nint section)
 		{
-			return workshopBookingList.Count;
+			if (section == 0) {
+				return workshopBookingList.Count;
+			}
+			else
+				return sessionBookingList.Count;
 		}
 
 
 		public override nint NumberOfSections (UITableView tableView)
 		{
-			return 1;
+			return 2;
 		}
 
 		public override string TitleForHeader (UITableView tableView, nint section)
 		{
-			return "Booking workshop";
+			if (section == 0) {
+				return "Booking workshop";
+			}
+			else
+				return "Booking session";
 		}
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
@@ -69,6 +77,18 @@ namespace HELPiOS
 				}
 
 			}
+
+			if (indexPath.Section == 1) {
+				if (sessionBookingList.Count == 0) {
+					dCell.TextLabel.Text = "No Records";
+					return dCell;
+				} else {
+					cell.UpdateCell (sessionBookingList [indexPath.Row].SessionType + ""
+						, sessionBookingList [indexPath.Row].StartDate + "");
+
+				}
+
+			}
 			return cell;
 		}
 
@@ -77,17 +97,32 @@ namespace HELPiOS
 			/// </summary>
 			public async override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 			{
-				WorkshopBooking workshopBooking = workshopBookingList[indexPath.Row];
-
+			
+					if (myBookingDetailViewController == null) {
 				myBookingDetailViewController = (MyBookingDetailViewController)AppDelegate.Storyboard.InstantiateViewController ("MyBookingDetailViewController");
-
-				//myBookingDetailViewController
-				if (workshopBooking != null) {
-					AppParam.campusName = await this.getCampusRoom (workshopBooking.campusID);
-					myBookingDetailViewController.ModalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
-					myBookingDetailViewController.workshopBooking = workshopBooking;
-					myBookingViewController.PresentViewController (myBookingDetailViewController, true, null);
-				}
+					}
+					
+					if (indexPath.Section == 0) {
+						WorkshopBooking workshopBooking = workshopBookingList [indexPath.Row];
+						//myBookingDetailViewController
+						if (workshopBooking != null) {
+							LoadingOverlay.Instance.showLoading (myBookingViewController);
+							AppParam.campusName = await this.getCampusRoom (workshopBooking.campusID);
+							myBookingDetailViewController.ModalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
+							myBookingDetailViewController.wkBooking = workshopBooking;
+							myBookingDetailViewController.ssBooking = null;
+							myBookingViewController.PresentViewController (myBookingDetailViewController, true, null);
+						}
+					} else {
+						SessionBooking sessionBooking = sessionBookingList [indexPath.Row];
+						//myBookingDetailViewController
+						if (sessionBooking != null) {
+							myBookingDetailViewController.ModalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
+							myBookingDetailViewController.wkBooking = null;
+							myBookingDetailViewController.ssBooking = sessionBooking;
+							myBookingViewController.PresentViewController (myBookingDetailViewController, true, null);
+						}
+					}
 				//deselect row
 				tableView.DeselectRow (indexPath, true);
 			}

@@ -8,7 +8,6 @@ namespace HELPiOS
 {
 	partial class HistoryViewController : UIViewController
 	{
-		public WorkshopBooking workshopBooking { get; set;}
 
 		public HistoryViewController (IntPtr handle) : base (handle)
 		{
@@ -30,12 +29,14 @@ namespace HELPiOS
 			LoadingOverlay.Instance.showLoading (this);
 
 			WorkshopBookingList workshopBookingList = new WorkshopBookingList ();
+			SessionBookingList sessionBookingList = new SessionBookingList ();
 
 			Student student = AppParam.Instance.student;
 
 			List<WorkshopBooking> wkBookingList = await workshopBookingList.getPastByStudent (student);
+			List<SessionBooking> ssBookingList = await sessionBookingList.getPastByStudent (student);
 
-			historyBookingTable.Source = new HistoryTableSource (this,wkBookingList);
+			historyBookingTable.Source = new HistoryTableSource (this,wkBookingList,ssBookingList);
 			historyBookingTable.ReloadData ();
 		}
 

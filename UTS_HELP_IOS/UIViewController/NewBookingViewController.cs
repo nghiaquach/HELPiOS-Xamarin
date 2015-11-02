@@ -19,6 +19,7 @@ namespace HELPiOS
 		};
 
 		private SearchSelection selectedItem;
+		SearchResultViewController searchResultViewController;
 		DateViewController dateVC;
 		private DateTime nsRef = new DateTime(2001, 1, 1, 0, 0, 0, 0, DateTimeKind.Local);
 
@@ -74,7 +75,9 @@ namespace HELPiOS
 
 				if (selectedItem == SearchSelection.Date){
 					//this.NavigationController.PushViewController (pinkViewController, true);
-					dateVC = (DateViewController)AppDelegate.Storyboard.InstantiateViewController ("DateViewController");
+					if(dateVC==null){
+						dateVC = (DateViewController)AppDelegate.Storyboard.InstantiateViewController ("DateViewController");
+					}
 					//AppDelegate.mainTabbarController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
 					this.PresentViewController(dateVC, true, null);
 				}
@@ -148,11 +151,11 @@ namespace HELPiOS
 		private async void searchByLocation(){
 			LoadingOverlay.Instance.showLoading(this);
 			if (!searchBar.Text.Equals("")) {
-				WorkshopList workshopList = new WorkshopList();
-				Campus cmp = new Campus ();
-				List<SingleWorkshop> ab =  await workshopList.searchByLocation(cmp);
 
-				Console.WriteLine("Result: "+ ab.Count);
+				CampusList campusList = new CampusList ();
+				HashSet<Campus> campuses = await campusList.filterByName (searchBar.Text);
+
+				showTempResultTable (campuses,null);
 			}
 		}
 
@@ -160,13 +163,10 @@ namespace HELPiOS
 		private async void searchByLecturer(){
 			LoadingOverlay.Instance.showLoading(this);
 			if (!searchBar.Text.Equals("")) {
-				WorkshopList workshopList = new WorkshopList();
 
-				Lecturer lecturer = new Lecturer ();
-
-				List<SingleWorkshop> ab =  await workshopList.searchByLecturer(lecturer);
-
-				Console.WriteLine("Result: "+ ab.Count);
+				LecturerList lecturerList = new LecturerList ();
+				HashSet<Lecturer> lecturers = await lecturerList.filterByName (searchBar.Text);
+				showTempResultTable (null,lecturers);
 			}
 		}
 
@@ -182,6 +182,16 @@ namespace HELPiOS
 			resultTableView.Source = new NewBookingTableSource (this,abstractWorkshopList);
 			resultTableView.ReloadData ();
 		}
+
+
+		private void showTempResultTable(HashSet<Campus> campusHashSet, HashSet<Lecturer> lecturerHashSet){
+			searchResultViewController = (SearchResultViewController)AppDelegate.Storyboard.InstantiateViewController ("SearchResultViewController");
+			searchResultViewController.campusHashSet = campusHashSet;
+			searchResultViewController.lectureHashSet = lecturerHashSet;
+			this.PresentViewController(searchResultViewController, true, null);
+		}
+
+
 	}
 
 

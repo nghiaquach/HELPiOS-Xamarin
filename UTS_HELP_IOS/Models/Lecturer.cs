@@ -13,6 +13,6 @@ namespace HELPiOS
         public string last_name { get; set; }
         public string email { get; set; }
         public bool inactive { get; set; }
-        public DateTime archived { get; set; }
+		public string archived { get; set; }
     }
 }

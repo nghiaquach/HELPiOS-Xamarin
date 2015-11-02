@@ -43,8 +43,9 @@ namespace HELPiOS
                 HashSet<Lecturer> lecturers = new HashSet<Lecturer>();
                 foreach (Lecturer lecturer in response.Results)
                 {
-                    if ((lecturer.first_name + " " + lecturer.last_name).Contains(searchTerm))
-                        lecturers.Add(lecturer);
+					if ((lecturer.first_name + " " + lecturer.last_name).Contains (searchTerm))
+						Console.WriteLine ("lecturer .....");
+						lecturers.Add(lecturer);
                 }
                 return lecturers;
             }

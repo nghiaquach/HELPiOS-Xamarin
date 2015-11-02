@@ -47,7 +47,7 @@ namespace HELPiOS
 		{
 			base.LayoutSubviews ();
 			//CGRect (x,y,w,h)
-			titleLabel.Frame = new CGRect(5, 5, 90,35);
+			titleLabel.Frame = new CGRect(5, 5, 140,35);
 			valueLabel.Frame = new CGRect(80, 2, ContentView.Bounds.Width-90, 35);
 		}
 	}

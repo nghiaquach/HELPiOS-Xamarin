@@ -54,11 +54,14 @@ namespace HELPiOS
 			LoadingOverlay.Instance.showLoading (this);
 
 			WorkshopBookingList workshopBookingList = new WorkshopBookingList ();
+			SessionBookingList sessionBookingList = new SessionBookingList ();
 
 			Student student = AppParam.Instance.student;
 
 			List<WorkshopBooking> wkBookingList = await workshopBookingList.getUpcomingByStudent (student);
-			myBookingTableView.Source = new MyBookingTableSource (this,wkBookingList);
+			List<SessionBooking> ssBookingList = await sessionBookingList.getUpcomingByStudent (student);
+
+			myBookingTableView.Source = new MyBookingTableSource (this,wkBookingList,ssBookingList);
 			myBookingTableView.ReloadData ();
 		}
 	}

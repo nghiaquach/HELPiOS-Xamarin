@@ -3,38 +3,51 @@ using UIKit;
 using Foundation;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace HELPiOS
 {
 	public class HistoryTableSource : UITableViewSource
 	{
+		List<WorkshopBooking> workshopBookingList = new List<WorkshopBooking>();
+		List<SessionBooking> sessionBookingList = new List<SessionBooking>();
 
-		List<WorkshopBooking> workshopBookingList = new List<WorkshopBooking> ();
-		UIViewController myBookingViewController;
-		MyBookingDetailViewController myBookingDetailViewController;
+		HistoryBookingDetailViewController historyBookingDetailViewController;
+		UIViewController historyBookingViewController;
 
-		NSString cellIdentifier = new NSString ("TableCell");
+		NSString cellIdentifier = new NSString("TableCell");
 
-		public HistoryTableSource (UIViewController myBookingViewController, List<WorkshopBooking> workshopBookingList)
+		public HistoryTableSource (UIViewController historyBookingViewController,
+			List<WorkshopBooking> workshopBookingList, List<SessionBooking> sessionBookingList)
 		{
 			this.workshopBookingList = workshopBookingList;
-			this.myBookingViewController = myBookingViewController;
+			this.historyBookingViewController = historyBookingViewController;
+			this.sessionBookingList = sessionBookingList;
 		}
+
 
 		public override nint RowsInSection (UITableView tableview, nint section)
 		{
-			return 5;
+			if (section == 0) {
+				return workshopBookingList.Count;
+			}
+			else
+				return sessionBookingList.Count;
 		}
 
 
 		public override nint NumberOfSections (UITableView tableView)
 		{
-			return 1;
+			return 2;
 		}
 
 		public override string TitleForHeader (UITableView tableView, nint section)
 		{
-			return "Booked workshop";
+			if (section == 0) {
+				return "Booked workshop";
+			}
+			else
+				return "Booked session";
 		}
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
@@ -60,12 +73,20 @@ namespace HELPiOS
 				} else {
 					cell.UpdateCell (workshopBookingList [indexPath.Row].topic + ""
 						, workshopBookingList [indexPath.Row].starting + "");
-					
+
 				}
 
-				cell.UpdateCell (workshopBookingList [indexPath.Row].topic + ""
-					, workshopBookingList [indexPath.Row].starting + "");
+			}
 
+			if (indexPath.Section == 1) {
+				if (sessionBookingList.Count == 0) {
+					dCell.TextLabel.Text = "No Records";
+					return dCell;
+				} else {
+					cell.UpdateCell (sessionBookingList [indexPath.Row].SessionType + ""
+						, sessionBookingList [indexPath.Row].StartDate + "");
+
+				}
 
 			}
 			return cell;
@@ -74,19 +95,48 @@ namespace HELPiOS
 		/// <summary>
 		/// Called when a row is touched
 		/// </summary>
-		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
+		public async override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 		{
-			WorkshopBooking workshopBooking = workshopBookingList[indexPath.Row];
 
-			//myBookingDetailViewController
-			if (workshopBooking != null) {
-				myBookingDetailViewController.ModalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
-				myBookingDetailViewController.workshopBooking = workshopBooking;
-				myBookingViewController.PresentViewController (myBookingDetailViewController, true, null);
+			if (historyBookingDetailViewController == null) {
+				historyBookingDetailViewController = (HistoryBookingDetailViewController)AppDelegate.Storyboard.InstantiateViewController ("HistoryBookingDetailViewController");
+			}
+
+			if (indexPath.Section == 0) {
+				WorkshopBooking workshopBooking = workshopBookingList [indexPath.Row];
+				//myBookingDetailViewController
+				if (workshopBooking != null) {
+					LoadingOverlay.Instance.showLoading (historyBookingViewController);
+					AppParam.campusName = await this.getCampusRoom (workshopBooking.campusID);
+					historyBookingDetailViewController.ModalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
+					historyBookingDetailViewController.wkBooking = workshopBooking;
+					historyBookingDetailViewController.ssBooking = null;
+					historyBookingViewController.PresentViewController (historyBookingDetailViewController, true, null);
+				}
+			} else {
+				SessionBooking sessionBooking = sessionBookingList [indexPath.Row];
+				//myBookingDetailViewController
+				if (sessionBooking != null) {
+					historyBookingDetailViewController.ModalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
+					historyBookingDetailViewController.wkBooking = null;
+					historyBookingDetailViewController.ssBooking = sessionBooking;
+					historyBookingViewController.PresentViewController (historyBookingDetailViewController, true, null);
+				}
 			}
 			//deselect row
 			tableView.DeselectRow (indexPath, true);
 		}
+
+		private async Task<string> getCampusRoom(int campusId){
+			CampusList campusList = new CampusList ();
+			Campus campus = await campusList.getById (campusId);
+			if (campus == null) {
+				return "";
+			}
+			return campus.campus;
+		}
+
 	}
+		
 }
 

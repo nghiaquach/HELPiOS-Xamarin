@@ -42,7 +42,8 @@ namespace HELPiOS
                 HashSet<Campus> campuses = new HashSet<Campus>();
                 foreach (Campus campus in response.Results)
                 {
-                    if (campus.campus.Contains(searchTerm))
+					if (campus.campus.Contains (searchTerm))
+						Console.WriteLine ("campus .....");
                         campuses.Add(campus);
                 }
                 return campuses;

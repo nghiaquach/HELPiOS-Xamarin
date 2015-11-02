@@ -1,20 +1,25 @@
 ﻿<Properties StartupItem="HELPiOS.csproj" RefactoringSettings.EnableRefactorings="True">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.9.0" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Accessors/StudentList.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.9.1" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Accessors/LecturerList.cs">
     <Files>
-      <File FileName="UIViewController/TableViewController/MyBookingTableSource.cs" Line="86" Column="21" />
-      <File FileName="Accessors/StudentList.cs" Line="28" Column="3" />
-      <File FileName="Models/StudentReg.cs" Line="5" Column="28" />
-      <File FileName="Models/Student.cs" Line="26" Column="37" />
-      <File FileName="Models/WorkshopSearch.cs" Line="3" Column="18" />
-      <File FileName="Models/WorkshopBookingSearch.cs" Line="3" Column="18" />
-      <File FileName="Models/WorkshopBooking.cs" Line="1" Column="1" />
-      <File FileName="Models/UpdateWorkshopBooking.cs" Line="1" Column="18" />
-      <File FileName="Models/UpdateSessionBooking.cs" Line="24" Column="6" />
-      <File FileName="UIViewController/LoginViewController.cs" Line="86" Column="57" />
-      <File FileName="UIViewController/RegisterViewController.cs" Line="142" Column="40" />
-      <File FileName="UIViewController/TableViewController/MyBookingDetailTableSource.cs" Line="62" Column="11" />
+      <File FileName="UIViewController/TableViewController/ResultTableSource.cs" Line="16" Column="3" />
+      <File FileName="UIViewController/TableViewController/NewBookingTableSource.cs" Line="1" Column="1" />
+      <File FileName="UIViewController/TableViewController/NewBookingDetailTableSource.cs" Line="1" Column="1" />
+      <File FileName="UIViewController/SearchResultViewController.designer.cs" Line="15" Column="38" />
+      <File FileName="UIViewController/NewBookingViewController.cs" Line="156" Column="61" />
+      <File FileName="Accessors/SessionBookingList.cs" Line="1" Column="1" />
+      <File FileName="Accessors/WorkshopBookingList.cs" Line="1" Column="1" />
+      <File FileName="Accessors/WorkshopList.cs" Line="77" Column="65" />
+      <File FileName="Accessors/StudentList.cs" Line="1" Column="1" />
+      <File FileName="Accessors/LecturerList.cs" Line="47" Column="35" />
+      <File FileName="UIViewController/HistoryBookingDetailViewController.cs" Line="75" Column="4" />
       <File FileName="Main.cs" Line="12" Column="1" />
+      <File FileName="Accessors/CampusList.cs" Line="46" Column="42" />
+      <File FileName="UIViewController/SearchResultViewController.cs" Line="68" Column="36" />
+      <File FileName="UIViewController/MyBookingDetailViewController.cs" Line="77" Column="31" />
+      <File FileName="UIViewController/LoginViewController.cs" Line="46" Column="3" />
+      <File FileName="UIViewController/NewBookingDetailViewController.cs" Line="60" Column="44" />
+      <File FileName="UIViewController/TableViewController/NewBookingDetailTableCell.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

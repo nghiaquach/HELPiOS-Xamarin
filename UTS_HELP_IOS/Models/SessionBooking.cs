@@ -25,10 +25,10 @@ namespace HELPiOS
         public int Attended { get; set; }
         public int? WaitingID { get; set; }
         public bool IsGroup { get; set; }
-        public int? NumPeople { get; set; }
+        public string NumPeople { get; set; }
         public string LecturerComment { get; set; }
         public string LearningIssues { get; set; }
-        public DateTime? IsLocked { get; set; }
+        public int? IsLocked { get; set; }
         public string AssignTypeOther { get; set; }
         public string Subject { get; set; }
         public string AppointmentsOther { get; set; }

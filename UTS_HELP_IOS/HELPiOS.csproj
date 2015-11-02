@@ -80,6 +80,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="MonoTouch.Dialog-1" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
@@ -172,6 +173,24 @@
     <Compile Include="Models\UpdateWorkshopBooking.cs" />
     <Compile Include="Models\WorkshopBookingSearch.cs" />
     <Compile Include="Models\WorkshopSearch.cs" />
+    <Compile Include="Calendar\CalendarListController.cs" />
+    <Compile Include="Calendar\EventListController.cs" />
+    <Compile Include="Calendar\CalendarParam.cs" />
+    <Compile Include="UIViewController\TableViewController\HistoryBookingDetailTableCell.cs" />
+    <Compile Include="UIViewController\TableViewController\HistoryBookingDetailTableSource.cs" />
+    <Compile Include="UIViewController\HistoryBookingDetailViewController.cs" />
+    <Compile Include="UIViewController\HistoryBookingDetailViewController.designer.cs">
+      <DependentUpon>HistoryBookingDetailViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIViewController\TableViewController\ResultTableSource.cs" />
+    <Compile Include="ResultViewController.cs" />
+    <Compile Include="ResultViewController.designer.cs">
+      <DependentUpon>ResultViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIViewController\SearchResultViewController.cs" />
+    <Compile Include="UIViewController\SearchResultViewController.designer.cs">
+      <DependentUpon>SearchResultViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -186,5 +205,6 @@
     <Folder Include="Models\" />
     <Folder Include="UIViewController\" />
     <Folder Include="UIViewController\TableViewController\" />
+    <Folder Include="Calendar\" />
   </ItemGroup>
 </Project>
