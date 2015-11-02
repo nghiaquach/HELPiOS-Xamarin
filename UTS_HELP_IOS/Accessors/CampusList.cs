@@ -40,11 +40,14 @@ namespace HELPiOS
             if (response.IsSuccess)
             {
                 HashSet<Campus> campuses = new HashSet<Campus>();
+
                 foreach (Campus campus in response.Results)
                 {
-					if (campus.campus.Contains (searchTerm))
-						Console.WriteLine ("campus .....");
-                        campuses.Add(campus);
+					if (campus.campus.Contains (searchTerm)) {
+						Console.WriteLine ("search term ..... " + searchTerm );
+						Console.WriteLine ("Campus ..... " + campus.campus);
+						campuses.Add (campus);
+					}
                 }
                 return campuses;
             }

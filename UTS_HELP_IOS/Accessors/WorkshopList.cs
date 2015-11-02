@@ -73,19 +73,5 @@ namespace HELPiOS
             parameters.Add("startingDtEnd", date);
             return await search(parameters);
         }
-
-        public async Task<List<SingleWorkshop>> searchByLocation(Campus campus)
-        {
-            Dictionary<string, Object> parameters = new Dictionary<string, Object>();
-            parameters.Add("campusID", campus.id);
-            return await search(parameters);
-        }
-
-        public async Task<List<SingleWorkshop>> searchByLecturer(Lecturer lecturer)
-        {
-            Dictionary<string, Object> parameters = new Dictionary<string, Object>();
-            parameters.Add("lecturerID", lecturer.id);
-            return await search(parameters);
-        }
 	}
 }

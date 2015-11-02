@@ -37,5 +37,29 @@ namespace HELPiOS
         {
             return await getByStudent(student, "endingDtEnd");
         }
+
+
+		public async Task<List<SessionBooking>> searchByLocation(Campus campus)
+		{
+			Dictionary<string, Object> parameters = new Dictionary<string, Object>();
+			parameters.Add("campusId", campus.id);
+			parameters.Add("active", true);
+			Response<SessionBooking> response = await db.get<SessionBooking>(apiUri + "search", parameters, null);
+			if (!response.IsSuccess)
+				throw new WebserviceFailureException(response.DisplayMessage);
+			return response.Results;
+		}
+
+		public async Task<List<SessionBooking>> searchByLecturer(Lecturer lecturer)
+		{
+			Dictionary<string, Object> parameters = new Dictionary<string, Object>();
+			parameters.Add("lecturerID", lecturer.id);
+			parameters.Add("active", true);
+			Response<SessionBooking> response = await db.get<SessionBooking>(apiUri + "search", parameters, null);
+
+			if (!response.IsSuccess)
+				throw new WebserviceFailureException(response.DisplayMessage);
+			return response.Results;
+		}
     }
 }

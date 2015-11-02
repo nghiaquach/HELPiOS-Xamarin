@@ -30,5 +30,8 @@ namespace HELPiOS
 		UIKit.UIBarButtonItem backButton { get; set; }
 
 	
+		void ReleaseDesignerOutlets ()
+		{
+		}
 	}
 }

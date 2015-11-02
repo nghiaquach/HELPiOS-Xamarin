@@ -18,6 +18,8 @@ namespace HELPiOS
 		public Campus selectedCampus{ get; set;}
 		public Lecturer selectedLecture{ get; set;}
 
+		public NewBookingViewController newBookingViewController;
+
 		public SearchResultViewController (IntPtr handle) : base (handle)
 		{
 			
@@ -41,7 +43,12 @@ namespace HELPiOS
 			};
 		}
 
-		public override void ViewDidAppear (bool animate){
+		public override void ViewDidAppear (bool animated)
+		{
+			this.loadDataResultTable ();
+		}
+						
+		private void loadDataResultTable (){
 			if (campusHashSet != null) {
 
 				HashSet<Campus>.Enumerator e = campusHashSet.GetEnumerator();
@@ -61,14 +68,17 @@ namespace HELPiOS
 				}
 			}
 
-			Console.WriteLine ("lecturerList " + lecturerList.Count);
-			Console.WriteLine ("campusList " + campusList.Count);
+			ResultTableSource rts = new ResultTableSource (this);
+			rts.campusList = campusList;
+			rts.lecturerList = lecturerList;
 
-			searchResultTable.Source = new ResultTableSource(this,campusList,lecturerList);
+			searchResultTable.Source = rts;
+
 			searchResultTable.ReloadData ();
 			// Perform any additional setup after loading the view, typically from a nib.
-		}
+
 
 		}
+	}
 }
 

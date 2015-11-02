@@ -7,25 +7,24 @@ namespace HELPiOS
 {
 	public class ResultTableSource : UITableViewSource
 	{
-		private List<Campus> campusList;
-		private List<Lecturer> lecturerList;
+		public List<Campus> campusList { get; set;}
+		public List<Lecturer> lecturerList{ get; set;}
 
 		string CellIdentifier = "TableCell";
+
 		private SearchResultViewController searchResultViewController;
 
-		public ResultTableSource (SearchResultViewController se, List<Campus> campusList,
-			List<Lecturer> lecturerList)
+		public ResultTableSource (SearchResultViewController se)
 		{
 			this.searchResultViewController = se;
-			this.campusList = campusList;
-			this.lecturerList = lecturerList;
 		}
 
 		public override nint RowsInSection (UITableView tableview, nint section)
 		{
-			if (campusList != null) {
+			if (campusList.Count>0) {
 				return campusList.Count;
 			} else {
+				Console.WriteLine ("lecture list Count: " + lecturerList.Count);
 				return lecturerList.Count;
 			}
 		}
@@ -38,16 +37,17 @@ namespace HELPiOS
 			if (cell == null)
 			{ cell = new UITableViewCell (UITableViewCellStyle.Default, CellIdentifier); }
 
+
 			Campus c = null;
 			Lecturer l = null;
 
-			if (campusList != null) {
+			if (campusList.Count>0){
 				c = campusList [indexPath.Row];
 				cell.TextLabel.Text = c.campus;
 				return cell;
 			} else {
 				l = lecturerList [indexPath.Row];
-				cell.TextLabel.Text = l.first_name + " " + l.last_name;
+				cell.TextLabel.Text = l.first_name + " - " + l.last_name;
 				return cell;
 			}
 
@@ -55,7 +55,13 @@ namespace HELPiOS
 
 		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 		{
+			if (campusList.Count > 0) {
+				searchResultViewController.selectedCampus = campusList [indexPath.Row];
+			} else {
+				searchResultViewController.selectedLecture = lecturerList [indexPath.Row];
+			}
 			tableView.DeselectRow (indexPath, true);
+			searchResultViewController.DismissViewControllerAsync(true);
 		}
 	}
 }

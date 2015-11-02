@@ -16,7 +16,7 @@ namespace HELPiOS
 		public int? cutoff { get; set; }
 		public string type { get; set; }
 		public int BookingCount { get; set; }
-        public bool? archived { get; set; }
+        public string archived { get; set; }
 
 	}
 

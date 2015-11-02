@@ -777,12 +777,6 @@ A: From "My Bookings", select a workshop from a list of workshops you have booke
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vCL-5U-mzn">
-                                <rect key="frame" x="11" y="113" width="298" height="359"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fe8-FU-xg9">
                                 <rect key="frame" x="0.0" y="56" width="320" height="44"/>
                                 <animations/>
@@ -803,6 +797,11 @@ A: From "My Bookings", select a workshop from a list of workshops you have booke
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="q8b-ye-2Ns">
+                                <rect key="frame" x="7" y="108" width="304" height="364"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.10980392160000001" green="0.52941176469999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -810,7 +809,7 @@ A: From "My Bookings", select a workshop from a list of workshops you have booke
                     <tabBarItem key="tabBarItem" title="My Bookings" id="0iu-qa-uBx"/>
                     <connections>
                         <outlet property="backButton" destination="cNX-Ah-GW5" id="YV7-xQ-r1x"/>
-                        <outlet property="searchResultTable" destination="vCL-5U-mzn" id="Kiq-1n-bae"/>
+                        <outlet property="searchResultTable" destination="q8b-ye-2Ns" id="PGr-Co-qYP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XO0-9e-nuE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -822,6 +821,8 @@ A: From "My Bookings", select a workshop from a list of workshops you have booke
         <image name="home-7.png" width="30" height="30"/>
         <image name="list-simple-7.png" width="30" height="30"/>
         <image name="message-7.png" width="30" height="30"/>
+        <image name="Default-568h.png" width="640" height="1136"/>
+        <image name="star-7.png" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

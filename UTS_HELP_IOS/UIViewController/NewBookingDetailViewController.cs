@@ -12,6 +12,7 @@ namespace HELPiOS
 	public partial class NewBookingDetailViewController : UIViewController
 	{
 		public SingleWorkshop singleWorkshop { get; set;}
+		public SessionBooking sessionBooking { get; set;}
 		
 		public NewBookingDetailViewController (IntPtr handle) : base (handle)
 		{
@@ -47,10 +48,18 @@ namespace HELPiOS
 		}
 
 		private void showBookingDetail ()
-		{			
-			descriptionTextView.Text = singleWorkshop.description==null?"No description":singleWorkshop.description;
-			newBookingDetailTable.Source = new NewBookingDetailTableSource (singleWorkshop);
+		{	
+			if (singleWorkshop != null) {
+				descriptionTextView.Text = singleWorkshop.description == null ? "No description" : singleWorkshop.description;
+				newBookingDetailTable.Source = new NewBookingDetailTableSource (singleWorkshop);
+
+			}
+			if (sessionBooking != null) {
+				descriptionTextView.Text = sessionBooking.LearningIssues == null ? "No description" : sessionBooking.LearningIssues;
+				newBookingDetailTable.Source = new NewBookingDetailTableSource (sessionBooking);
+			}
 			newBookingDetailTable.ReloadData ();
+
 		}
 
 		private async void bookWorkshop(){

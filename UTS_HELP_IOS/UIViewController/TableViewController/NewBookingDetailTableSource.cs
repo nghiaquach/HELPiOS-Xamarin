@@ -8,11 +8,19 @@ namespace HELPiOS
 	public class NewBookingDetailTableSource : UITableViewSource {
 
 		SingleWorkshop singleWorkshop;
+		SessionBooking sessionBooking;
+
 		NSString cellIdentifier = new NSString("TableCell");
 
 		public NewBookingDetailTableSource (SingleWorkshop singleWorkshop)
 		{
 			this.singleWorkshop = singleWorkshop;
+		}
+
+
+		public NewBookingDetailTableSource (SessionBooking sessionBooking)
+		{
+			this.sessionBooking = sessionBooking;
 		}
 
 		public override nint RowsInSection (UITableView tableview, nint section)
@@ -38,23 +46,44 @@ namespace HELPiOS
 				cell = new MyBookingDetailTableCell (cellIdentifier);
 			}
 
-			switch (indexPath.Row)
-			{
-			case 0:
-				cell.UpdateCell (@"Title", singleWorkshop.topic);
-				break;
-			case 1:
-				cell.UpdateCell (@"Room", singleWorkshop.campus+"");
-				break;
-			case 2:
-				cell.UpdateCell (@"Date Time", singleWorkshop.StartDate+"");
-				break;
-			case 3:
-				cell.UpdateCell (@"Target Group", singleWorkshop.targetingGroup==null?"None":singleWorkshop.targetingGroup);
-				break;
-			case 4:
-				cell.UpdateCell (@"Place available", singleWorkshop.maximum+"");
-				break;
+			if (singleWorkshop != null) {
+				switch (indexPath.Row) {
+				case 0:
+					cell.UpdateCell (@"Title", singleWorkshop.topic);
+					break;
+				case 1:
+					cell.UpdateCell (@"Room", singleWorkshop.campus + "");
+					break;
+				case 2:
+					cell.UpdateCell (@"Date Time", singleWorkshop.StartDate + "");
+					break;
+				case 3:
+					cell.UpdateCell (@"Target Group", singleWorkshop.targetingGroup == null ? "None" : singleWorkshop.targetingGroup);
+					break;
+				case 4:
+					cell.UpdateCell (@"Place available", singleWorkshop.maximum + "");
+					break;
+				}
+			}
+
+			if (sessionBooking != null) {
+				switch (indexPath.Row) {
+				case 0:
+					cell.UpdateCell (@"Title", sessionBooking.SessionType);
+					break;
+				case 1:
+					cell.UpdateCell (@"Room", sessionBooking.Campus + "");
+					break;
+				case 2:
+					cell.UpdateCell (@"Date Time", sessionBooking.StartDate + "");
+					break;
+				case 3:
+					cell.UpdateCell (@"Target Group", sessionBooking.IsGroup == false ? "Single" : "Multiple");
+					break;
+				case 4:
+					cell.UpdateCell (@"Place available", sessionBooking.NumPeople + "");
+					break;
+				}
 			}
 
 			return cell;

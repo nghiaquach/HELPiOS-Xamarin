@@ -4,6 +4,7 @@ using System;
 using Foundation;
 using UIKit;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace HELPiOS
 {
@@ -50,9 +51,11 @@ namespace HELPiOS
 				switch (selectedSegmentId){
 				case 0:
 					selectedItem = SearchSelection.Topic;
+					searchResultViewController = null;
 					break;
 				case 1:
 					selectedItem = SearchSelection.Date;
+					searchResultViewController = null;
 					break;
 				case 2:
 					selectedItem = SearchSelection.Location;
@@ -65,6 +68,8 @@ namespace HELPiOS
 				searchBar.Text = "";
 				searchButton.Enabled = false;
 
+				resultTableView.Source = null;
+				resultTableView.ReloadData();
 			};
 
 			searchBar.TextChanged += (s, e) => {
@@ -120,6 +125,38 @@ namespace HELPiOS
 					searchButton.Enabled = true;
 				}
 			}
+			this.doSearch ();
+
+		}
+
+		private async void doSearch(){
+			if (searchResultViewController != null) {
+				Campus tmpCampus = searchResultViewController.selectedCampus;
+				Lecturer tmpLecturer = searchResultViewController.selectedLecture;
+				List<SessionBooking> ssList = new List<SessionBooking> ();
+
+				if (tmpCampus != null) {
+					ssList = await this.searchByCampus (tmpCampus);
+				}
+				if (tmpLecturer != null) {
+					ssList = await this.searchByLecturer (tmpLecturer);
+				}
+
+				this.showResultInTable (ssList);
+			}
+		}
+			
+
+		private async Task<List<SessionBooking>> searchByCampus(Campus campus){
+			LoadingOverlay.Instance.showLoading(this);
+			SessionBookingList ssList = new SessionBookingList();
+			return await ssList.searchByLocation (campus);
+		}
+
+		private async Task<List<SessionBooking>> searchByLecturer(Lecturer lecturer){
+			LoadingOverlay.Instance.showLoading(this);
+			SessionBookingList ssList = new SessionBookingList();
+			return await ssList.searchByLecturer (lecturer);
 		}
 		//search by topic
 		private async void searchByTopic(){
@@ -140,12 +177,8 @@ namespace HELPiOS
 
 				List<SingleWorkshop> ab =  await workshopList.searchByStartDate(this.toDateFromNSDate(dateVC.selectedDate));
 				this.showResultInTable (ab);
-
-				Console.WriteLine("Result: "+ ab.Count);
 			}
 		}
-
-
 
 		//search by date
 		private async void searchByLocation(){
@@ -178,8 +211,13 @@ namespace HELPiOS
 			return nsRef.AddSeconds(nsDate.SecondsSinceReferenceDate);
 		}
 
-		private void showResultInTable(List<SingleWorkshop> abstractWorkshopList){
-			resultTableView.Source = new NewBookingTableSource (this,abstractWorkshopList);
+		public void showResultInTable(List<SessionBooking> ssList){
+			resultTableView.Source = new NewBookingTableSource (this,ssList);
+			resultTableView.ReloadData ();
+		}
+
+		public void showResultInTable(List<SingleWorkshop> singletWorkshopList){
+			resultTableView.Source = new NewBookingTableSource (this,singletWorkshopList);
 			resultTableView.ReloadData ();
 		}
 
@@ -188,6 +226,7 @@ namespace HELPiOS
 			searchResultViewController = (SearchResultViewController)AppDelegate.Storyboard.InstantiateViewController ("SearchResultViewController");
 			searchResultViewController.campusHashSet = campusHashSet;
 			searchResultViewController.lectureHashSet = lecturerHashSet;
+			searchResultViewController.newBookingViewController = this;
 			this.PresentViewController(searchResultViewController, true, null);
 		}
 
