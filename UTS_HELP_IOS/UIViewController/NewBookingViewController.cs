@@ -164,8 +164,7 @@ namespace HELPiOS
 			if (!searchBar.Text.Equals("")) {
 				WorkshopList workshopList = new WorkshopList();
 				List<SingleWorkshop> ab =  await workshopList.searchByTopic(searchBar.Text);
-			
-				Console.WriteLine("Result "+ ab.Count);
+				this.showResultInTable (ab);
 			}
 		}
 

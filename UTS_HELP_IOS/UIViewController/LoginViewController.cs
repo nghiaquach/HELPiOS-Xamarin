@@ -45,12 +45,8 @@ namespace HELPiOS
 
 		public override void ViewDidAppear (bool animate){
 			AppParam.Instance.student = null;
-			//for testing
-			StudentID.Text = "11875360";
-			Password.Text = "1234567";
-
-//			StudentID.Text = "";
-//			Password.Text = "";
+			StudentID.Text = "";
+			Password.Text = "";
 		}
 
 		private bool validation(string studentId, string password){

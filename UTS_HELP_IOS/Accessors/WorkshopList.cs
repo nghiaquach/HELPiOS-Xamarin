@@ -6,7 +6,7 @@ namespace HELPiOS
 {
     public class WorkshopList
 	{
-		private const string apiUri = "workshop/";
+		private const string apiUri = "workshop";
 		private DataFacade db;
 
 		public WorkshopList()
@@ -62,8 +62,24 @@ namespace HELPiOS
         public async Task<List<SingleWorkshop>> searchByTopic(string topic)
         {
             Dictionary<string, Object> parameters = new Dictionary<string, Object>();
-            parameters.Add("topic", topic);
-            return await search(parameters);
+            parameters.Add("active", true);
+			Response<SingleWorkshop> response = await db.get<SingleWorkshop>(apiUri + "/search", parameters, null);
+			if (response.IsSuccess && response.Results != null)
+			{
+				List<SingleWorkshop> tmpList = new List<SingleWorkshop> ();
+
+				foreach (SingleWorkshop singleWorkshop in response.Results)
+				{
+					if (singleWorkshop.topic.ToLower().Contains (topic.ToLower())) {
+						tmpList.Add (singleWorkshop);
+					}
+				}
+				return tmpList;
+			}
+			else
+			{
+				throw new WebserviceFailureException(response.DisplayMessage);
+			}
         }
 
         public async Task<List<SingleWorkshop>> searchByStartDate(DateTime date)

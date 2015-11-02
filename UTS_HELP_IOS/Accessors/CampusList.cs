@@ -26,7 +26,9 @@ namespace HELPiOS
                     if (campus.id == id)
                         return campus;
                 }
-                throw new CampusNotFound(response.DisplayMessage);
+				AppParam.Instance.showAlertMessage ("Campus Not Found!",response.DisplayMessage);
+				return null;
+				//                throw new CampusNotFound(response.DisplayMessage);
             }
             else
             {
@@ -43,9 +45,7 @@ namespace HELPiOS
 
                 foreach (Campus campus in response.Results)
                 {
-					if (campus.campus.Contains (searchTerm)) {
-						Console.WriteLine ("search term ..... " + searchTerm );
-						Console.WriteLine ("Campus ..... " + campus.campus);
+					if (campus.campus.ToLower().Contains (searchTerm.ToLower())) {
 						campuses.Add (campus);
 					}
                 }

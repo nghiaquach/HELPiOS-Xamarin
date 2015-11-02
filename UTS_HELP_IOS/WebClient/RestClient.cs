@@ -14,7 +14,7 @@ namespace HELPiOS
 		private const int BufferSize = 256000;
 		private const String AppKey = "AppKey";
 		private const String AppValue = "123456";
-		private const String BaseUri = "http://g11.cloudapp.net/api/";
+		private const String BaseUri = "http://g11.cloudapp.net/api";
 
 		private HttpClient client;
 
@@ -60,6 +60,7 @@ namespace HELPiOS
 				}
 				else
 				{
+				LoadingOverlay.Instance.hideLoading ();
                 throw new WebserviceFailureException(await response.Content.ReadAsStringAsync());
 			}
 		}
